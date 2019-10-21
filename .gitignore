@@ -1,6 +1,11 @@
 # Test folder
 lufthansa-console/src/test/
 
+# Intellij
+.DS_Store
+.idea/
+*.iml
+
 # Compiled class file
 *.class
 
