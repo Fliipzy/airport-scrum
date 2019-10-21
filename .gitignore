@@ -1,6 +1,11 @@
 # Test folder
 OOOlufthansa-console/src/test/
 
+# Intellij 
+.idea/
+.settings/
+*.iml
+
 # Compiled class file
 *.class
 
