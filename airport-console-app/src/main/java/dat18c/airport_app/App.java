@@ -1,4 +1,4 @@
-package edu.dat18c.lufthansa;
+package dat18c.airport_app;
 
 /**
  * Hello world!
