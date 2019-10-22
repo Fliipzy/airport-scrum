@@ -1,9 +1,9 @@
 # Test folder
 airport-console-app/src/test/
 
-# Intellij
-.DS_Store
+# Intellij 
 .idea/
+.settings/
 *.iml
 
 # Compiled class file
