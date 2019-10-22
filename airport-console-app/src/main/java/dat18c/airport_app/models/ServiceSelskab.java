@@ -1,4 +1,4 @@
-package dat18c.airport_app.model;
+package dat18c.airport_app.models;
 
 public class ServiceSelskab {
     private int idServiceSelskab;

@@ -1,23 +1,20 @@
-package dat18c.airport_app.model;
+package dat18c.airport_app.models;
 
 /**
  * FlySelskab klasse med attribut "Name"
  */
-public class FlySelskab {
-
+public class Airline 
+{
     private String name;
 
-    public FlySelskab(String name) {
+    public Airline(String name) 
+    {
         this.name = name; 
     }
-
-
     //Getter og Setter for Name-variabel.
-    public String getName() {
+    public String getName() 
+    {
         return name;
-
     }
-
-
 
 }
