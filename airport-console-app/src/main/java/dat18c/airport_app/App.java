@@ -13,11 +13,7 @@ public class App
 {
     public static void main( String[] args )
     {
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> cd26369cd0068b7003f236291726677bd1ab6f55
 
         IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();
@@ -25,6 +21,7 @@ public class App
 
         ServiceSelskabRepo serviceSelskabRepo = new ServiceSelskabRepo(dbConnection);
 
+        serviceSelskabRepo.showAll();
         serviceSelskabRepo.insert();
 
 
