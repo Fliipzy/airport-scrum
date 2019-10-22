@@ -23,12 +23,40 @@ public class ServiceSelskabRepo implements ICrud<ServiceSelskab>
         this.conn = databaseConnection.getConnection();
     }
 
+    public void showServiceSelskab()
+    {
+        try
+        {
+            var dbConnection = DatabaseConnection.getInstance();
+            dbConnection.connect();
+            var statement = dbConnection.getConnection().createStatement();
+            var resultSet = statement.executeQuery("SELECT * FROM serviceselskab");
+
+
+
+            while (resultSet.next())
+            {
+                for (int i = 0; i < 13 ; i++)
+                {
+                    System.out.print(resultSet.getString(2 + i)+ " ");
+                }
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
+            //TODO: handle exception
+        }
+    }
+
 
 
     @Override
     public List<ServiceSelskab> fetchAll()
     {
-        List<ServiceSelskab> serviceList = new ArrayList<>();
+       /* List<ServiceSelskab> serviceList = new ArrayList<>();
 
 
         try {
@@ -47,7 +75,8 @@ public class ServiceSelskabRepo implements ICrud<ServiceSelskab>
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }return serviceList;
+        }return serviceList;*/
+       return null;
     }
 
     @Override
