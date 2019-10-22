@@ -6,6 +6,11 @@ OOOlufthansa-console/src/test/
 .settings/
 *.iml
 
+# Intellij
+.DS_Store
+.idea/
+*.iml
+
 # Compiled class file
 *.class
 
