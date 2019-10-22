@@ -9,10 +9,12 @@ import java.sql.*;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class ServiceSelskabRepo implements ICrud<ServiceSelskab>
 {
+    static Scanner input;
 
 
     private Connection conn;
@@ -23,7 +25,10 @@ public class ServiceSelskabRepo implements ICrud<ServiceSelskab>
         this.conn = databaseConnection.getConnection();
     }
 
-    public void showServiceSelskab()
+
+
+    @Override
+    public void showAll()
     {
         try
         {
@@ -51,50 +56,64 @@ public class ServiceSelskabRepo implements ICrud<ServiceSelskab>
         }
     }
 
-
-
-    @Override
-    public List<ServiceSelskab> fetchAll()
+    public void insert()
     {
-       /* List<ServiceSelskab> serviceList = new ArrayList<>();
 
+        input = new Scanner(System.in);
+        String sql = "INSERT INTO serviceselskab(idServiceSelskab, size, Taxi_ind_ved_ankomst, Passagerer_ud," +
+                "Bagage_ud, Brændstof_påfyldning, Rengøring, Bagage_ind, Passagerer_ind, Taxi_ud_til_afgang," +
+                "Taxi_til_og_fra_ventepladser, Personale_til_og_fra_naboplads, Personale_til_og_fra_øvrige_i_egen_terminal," +
+                "Personale_til_og_fra_den_anden_terminal ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
-            Statement statement = conn.createStatement();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, input.nextInt());
+            statement.setString(2, input.next());
+            statement.setInt(3, input.nextInt());
+            statement.setInt(4, input.nextInt());
+            statement.setInt(5, input.nextInt());
+            statement.setInt(6, input.nextInt());
+            statement.setInt(7, input.nextInt());
+            statement.setInt(8, input.nextInt());
+            statement.setInt(9, input.nextInt());
+            statement.setInt(10, input.nextInt());
+            statement.setInt(11, input.nextInt());
+            statement.setInt(12, input.nextInt());
+            statement.setInt(13, input.nextInt());
+            statement.setInt(14, input.nextInt());
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM serviceselskab");
-
-            if(statement.execute("SELECT * FROM serviceselskab"))
+            int rowsInserted = statement.executeUpdate();
+            if(rowsInserted > 0 )
             {
-                resultSet = statement.getResultSet();
+                System.out.println("Info added");
             }
-
-            serviceList.add(resultSet);
-
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }return serviceList;*/
-       return null;
+        }
     }
+
+
 
     @Override
     public ServiceSelskab findById(int id)
     {
-
         return null;
 
+    }
+
+    @Override
+    public void update(ServiceSelskab o)
+    {
+
 
     }
 
     @Override
-    public void update(ServiceSelskab o) {
+    public void addItem(ServiceSelskab o)
+    {
 
-    }
-
-    @Override
-    public void addItem(ServiceSelskab o) {
 
     }
 
