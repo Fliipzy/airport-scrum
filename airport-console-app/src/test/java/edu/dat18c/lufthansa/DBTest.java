@@ -15,6 +15,7 @@ public class DBTest
     @Test
     public void TestDBConnection()
     {
+        System.out.println("test");
         IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
 
         assertTrue(dbConnection.connect());

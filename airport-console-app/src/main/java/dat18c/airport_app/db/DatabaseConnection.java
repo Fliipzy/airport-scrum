@@ -36,13 +36,13 @@ public class DatabaseConnection implements IDatabaseConnection
             {
                 try 
                 {
-                    connection = DriverManager.getConnection("jdbc:mysql//den1.mysql6.gear.host:3306/lufthavn", "lufthavn", "dat18c!");
+                    connection = DriverManager.getConnection("jdbc:mysql://den1.mysql6.gear.host:3306/lufthavn", "lufthavn", "dat18c!");
                     isConnected = true;
                     return true;
                 }
                 catch (SQLException e) 
                 {
-                    System.out.println("Something went wrong trying to connect to the database!");
+                    System.out.println(e);
                     return false;
                 }
             }
