@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ICrud<T> {
 
-    List fetchAll();
+    List<T> fetchAll();
 
     T findById(int id);
 
