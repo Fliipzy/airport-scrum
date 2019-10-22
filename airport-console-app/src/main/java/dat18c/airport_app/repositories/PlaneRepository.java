@@ -56,12 +56,12 @@ public class PlaneRepository implements ICrud<Plane>
     public void create(Plane t) throws SQLException
     {
         var sql = String.format(
-            "INSERT INTO fly (navn, flyselskab_navn, størrelse) VALUES ('%s', '%s', %i)",
+            "INSERT INTO fly (navn, flyselskab_navn, størrelse) VALUES ('%s', '%s', %s)",
             t.getName(), t.getFlySelskab().getName(), t.getSize().ordinal());
 
         var statement = connection.createStatement();
         statement.executeUpdate(sql);
-        
+
         statement.close();
     }
 
@@ -69,7 +69,6 @@ public class PlaneRepository implements ICrud<Plane>
     public void deleteById(int id) throws SQLException
     {
         // TODO Auto-generated method stub
-
     }
 
     private Plane mapToPlane(ResultSet resultSet) throws SQLException

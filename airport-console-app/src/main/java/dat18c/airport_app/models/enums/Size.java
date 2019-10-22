@@ -1,21 +1,21 @@
 package dat18c.airport_app.models.enums;
 
-public enum PlaneSize
+public enum Size
 {
-    small(1),
-    medium(2),
-    big(3);
+    SMALL(1),
+    MEDIUM(2),
+    BIG(3);
 
     private final int index;
 
-    PlaneSize(int index)
+    Size(int index)
     {
         this.index = index;
     }
 
-    public static PlaneSize fromInt(int i)
+    public static Size fromInt(int i)
     {
-        for (var ps : PlaneSize.values()) 
+        for (var ps : Size.values()) 
         {
             if (ps.index == i) 
             { 

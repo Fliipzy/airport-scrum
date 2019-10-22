@@ -6,16 +6,11 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Debug (Launch) - Current File",
+            "name": "Debug Console App",
             "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-App<airport-console-app>",
-            "request": "launch",
-            "mainClass": "dat18c.airport_app.App",
-            "projectName": "airport-console-app"
+            "mainClass": "dat18c.airport_app.Program",
+            "projectName": "airport-console-app",
+            "console": "externalTerminal"
         }
     ]
 }

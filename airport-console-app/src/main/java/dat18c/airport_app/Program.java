@@ -5,8 +5,8 @@ package dat18c.airport_app;
  */
 public class Program 
 {
-    public static void main( String[] args )
+    public static void main(String[] args) 
     {
-
+        
     }
 }

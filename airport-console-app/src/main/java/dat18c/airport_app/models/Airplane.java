@@ -1,19 +1,15 @@
 package dat18c.airport_app.models;
 
-import dat18c.airport_app.models.enums.PlaneSize;
+import dat18c.airport_app.models.enums.Size;
 import dat18c.airport_app.models.Airline;
 
-/**
- * Fly klasse med attribut "name".
- * Kalder på FlySelskab klassen
- */
-public class Plane 
+public class Airplane 
 {
     private String name;
-    private PlaneSize size;
+    private Size size;
     private Airline airline;
 
-    public Plane(String name, PlaneSize size, Airline airline) 
+    public Airplane(String name, Size size, Airline airline) 
     {
         this.name = name;
         this.size = size;
@@ -25,7 +21,7 @@ public class Plane
         return airline;
     }
 
-    public PlaneSize getSize()
+    public Size getSize()
     {
         return size;
     }
