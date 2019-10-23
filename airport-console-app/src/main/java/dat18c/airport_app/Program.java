@@ -33,7 +33,8 @@ public class Program
         System.out.println("2\t Arrivals and Depatures");
         System.out.println("3\t Airplane Service");
         System.out.println("4\t Apron");
-        System.out.println("5\t ");
+        System.out.println("5\t Show airport status  - Apron");
+        System.out.println("8\t Exit");
 
         System.out.println("Please enter your choice");
 
@@ -51,7 +52,10 @@ public class Program
             case 4:
                 System.out.println("Apron");
             case 5:
-                System.out.println("----");
+                System.out.println("Show airport status  - Apron");
+
+            case 8:
+                break;
         }
     }
 }
