@@ -3,6 +3,8 @@ package dat18c.airport_app;
 
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.db.interfaces.IDatabaseConnection;
+import dat18c.airport_app.models.Airline;
+import dat18c.airport_app.repositories.AirlineRepository;
 import dat18c.airport_app.repositories.AirportServiceCompanyRepository;
 
 import java.sql.SQLException;
@@ -21,10 +23,15 @@ public class Program
         dbConnection.connect();
 
         AirportServiceCompanyRepository airportService = new AirportServiceCompanyRepository(dbConnection);
+        AirlineRepository airlineRepository = new AirlineRepository(dbConnection);
+
+        //airlineRepository.create();
+        //airlineRepository.deleteairLineInfo();
 
 //        airportService.deleteServiceSelskab();
 //        airportService.insert();
 //          airportService.updateServiceTable();
+
 
         Scanner sc = new Scanner(System.in);
 
