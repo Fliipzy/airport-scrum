@@ -15,6 +15,7 @@ public class Arrival
         this.plane = plane;
         this.fromCountry = fromCountry;
         this.arrivalTime = arrivalDate;
+        //
     }
 
     public Airplane getPlane() 
