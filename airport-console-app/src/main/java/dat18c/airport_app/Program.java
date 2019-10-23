@@ -22,8 +22,9 @@ public class Program
 
         AirportServiceCompanyRepository airportService = new AirportServiceCompanyRepository(dbConnection);
 
-        airportService.deleteServiceSelskab();
-
+//        airportService.deleteServiceSelskab();
+//        airportService.insert();
+//          airportService.updateServiceTable();
 
         Scanner sc = new Scanner(System.in);
 
