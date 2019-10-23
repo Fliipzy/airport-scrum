@@ -1,13 +1,10 @@
 package dat18c.airport_app;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.models.AirplaneParkingSpot;
-import dat18c.airport_app.models.Arrival;
 import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
-import dat18c.airport_app.repositories.ArrivalRepository;
 
 /**
  * Hello world!
@@ -39,6 +36,16 @@ public class Program
         /*
         Scanner sc = new Scanner(System.in);
 
+    public static void main(String[] args) throws SQLException {
+        IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
+        dbConnection.connect();
+
+        AirportServiceCompanyRepository airportService = new AirportServiceCompanyRepository(dbConnection);
+        AirlineRepository airlineRepository = new AirlineRepository(dbConnection);
+
+        //airlineRepository.create();
+        //airlineRepository.deleteairLineInfo();
+
         while (true) 
         {
             printMenu();
@@ -58,9 +65,13 @@ public class Program
                     System.out.println("----");
             }
         }
+>>>>>>> 643991218b2e023b6560eb0667e5877d566abab9
 
         //Display Menu
 
+
+        Scanner sc = new Scanner(System.in);
+=======
         //Getting user input
         */
     }
