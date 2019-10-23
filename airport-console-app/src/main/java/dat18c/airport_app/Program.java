@@ -13,26 +13,46 @@ public class Program
 {
     public static void main(String[] args) 
     {
-        try 
-        {
-            DatabaseConnection dbConnection = DatabaseConnection.getInstance();
-            dbConnection.connect();
-            
-            AirplaneParkingSpotRepository repo = new AirplaneParkingSpotRepository(dbConnection);
-            List<AirplaneParkingSpot> parkingSpots = repo.fetchAll();
 
-            for (AirplaneParkingSpot a : parkingSpots) 
+        while (true) 
+        {
+            
+            System.out.println("Want to see airplane parking spots?");
+            System.console().readLine();
+            
+            try 
             {
-                System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
-                + ", Size:\t" + a.getSize().toString());    
+                DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+                dbConnection.connect();
+                
+                AirplaneParkingSpotRepository repo = new AirplaneParkingSpotRepository(dbConnection);
+                List<AirplaneParkingSpot> parkingSpots = repo.fetchAll();
+                
+                for (AirplaneParkingSpot a : parkingSpots) 
+                {
+                    System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
+                    + ", Size:\t" + a.getSize().toString());    
+                }
+                
+            } 
+            catch (Exception e) 
+            {
             }
             
-        } catch (Exception e) 
-        {
-
+            System.out.println("Are you finished looking?");
+            System.console().readLine();
+            
+            try 
+            {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } 
+            catch (Exception e) 
+            {
+            }
+            
         }
     }
-
+        
     private static void printMenu()
     {
         System.out.println("1\t Flight information");
