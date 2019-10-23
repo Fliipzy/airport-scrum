@@ -31,7 +31,7 @@ public class AirplaneRepository implements ICrud<Airplane>
 
         while (resultSet.next()) 
         {
-            planes.add(mapToPlane(resultSet));    
+            planes.add(mapToPlane(resultSet)); 
         }
         
         statement.close();

@@ -15,7 +15,7 @@ public class Departure
         this.airplane = airplane;
         this.toCountry = toCountry;
         this.departureDate = departureDate;
-    }
+    }   
 
     public Airplane getAirplane() 
     {
