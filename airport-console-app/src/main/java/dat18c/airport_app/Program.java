@@ -31,49 +31,6 @@ public class Program
         {
 
         }
-
-
-        /*
-        Scanner sc = new Scanner(System.in);
-
-    public static void main(String[] args) throws SQLException {
-        IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
-        dbConnection.connect();
-
-        AirportServiceCompanyRepository airportService = new AirportServiceCompanyRepository(dbConnection);
-        AirlineRepository airlineRepository = new AirlineRepository(dbConnection);
-
-        //airlineRepository.create();
-        //airlineRepository.deleteairLineInfo();
-
-        while (true) 
-        {
-            printMenu();
-            int choice = getInt();
-
-            switch (choice)
-            {
-                case 1:
-                    System.out.println("Flight Information");
-                case 2:
-                    System.out.println("Arrivals and Depatures");
-                case 3:
-                    System.out.println("Airplane Service");
-                case 4:
-                    System.out.println("Apron");
-                case 5:
-                    System.out.println("----");
-            }
-        }
->>>>>>> 643991218b2e023b6560eb0667e5877d566abab9
-
-        //Display Menu
-
-
-        Scanner sc = new Scanner(System.in);
-=======
-        //Getting user input
-        */
     }
 
     private static void printMenu()
