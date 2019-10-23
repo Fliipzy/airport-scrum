@@ -15,26 +15,6 @@ public class Program
 {
     public static void main(String[] args) 
     {
-        var dbConnection = DatabaseConnection.getInstance();
-        dbConnection.connect();
-        var aRepo = new ArrivalRepository(dbConnection);
-
-        try 
-        {
-            List<Arrival> arrivals = aRepo.fetchAll();
-            for (Arrival a : arrivals) 
-            {
-                System.out.println(a.getAirplane().getName() + " " + a.getAirplane().getFlySelskab().getName() + " " + a.getFromCountry() + " " + a.getArrivalDate());    
-            }
-    
-        } catch (Exception e) 
-        {
-            //TODO: handle exception
-        }
-
-
-        
-
         /*
         Scanner sc = new Scanner(System.in);
 
