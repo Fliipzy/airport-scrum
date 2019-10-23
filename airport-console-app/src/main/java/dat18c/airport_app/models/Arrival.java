@@ -4,23 +4,22 @@ import java.util.Date;
 
 public class Arrival 
 {
-    private Airplane plane;
+    private Airplane airplane;
     private String fromCountry;
     private Date arrivalTime;
 
     public Arrival() {}
 
-    public Arrival(Airplane plane, String fromCountry, Date arrivalDate) 
+    public Arrival(Airplane airplane, String fromCountry, Date arrivalDate) 
     {
-        this.plane = plane;
+        this.airplane = airplane;
         this.fromCountry = fromCountry;
         this.arrivalTime = arrivalDate;
-        //
     }
 
-    public Airplane getPlane() 
+    public Airplane getAirplane() 
     {
-      return plane;
+      return airplane;
     }
 
     public String getFromCountry() 
