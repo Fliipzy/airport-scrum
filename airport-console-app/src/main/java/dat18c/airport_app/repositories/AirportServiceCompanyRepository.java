@@ -49,7 +49,21 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
     }
 
     @Override
-    public void deleteById(int id) throws SQLException {
+    public void deleteById(int id) throws SQLException
+    {}
+    public void deleteServiceSelskab() throws SQLException
+    {
+        input = new Scanner(System.in);
+        String sql = "DELETE FROM serviceselskab WHERE idServiceSelskab=?";
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, input.next());
+
+        int rowsDeleted = statement.executeUpdate();
+        if(rowsDeleted > 0)
+        {
+            System.out.println("ServiceSelskab deleted");
+        }
 
     }
 
