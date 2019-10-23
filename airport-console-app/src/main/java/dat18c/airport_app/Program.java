@@ -22,7 +22,7 @@ public class Program
 
         AirportServiceCompanyRepository airportService = new AirportServiceCompanyRepository(dbConnection);
 
-        airportService.insert();
+        airportService.deleteServiceSelskab();
 
 
         Scanner sc = new Scanner(System.in);
