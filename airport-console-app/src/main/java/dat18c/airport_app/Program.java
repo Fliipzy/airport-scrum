@@ -1,21 +1,21 @@
 package dat18c.airport_app;
 
-<<<<<<< HEAD
+
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.db.interfaces.IDatabaseConnection;
 import dat18c.airport_app.repositories.AirportServiceCompanyRepository;
 
 import java.sql.SQLException;
-=======
+
 import java.util.Scanner;
->>>>>>> a46dedd237c5b02a99a261ee4406e2ca6e1e655d
+
 
 /**
  * Hello world!
  */
 public class Program 
 {
-<<<<<<< HEAD
+
     public static void main(String[] args) throws SQLException {
         IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();
@@ -24,9 +24,7 @@ public class Program
 
         airportService.insert();
 
-=======
-    public static void main(String[] args) 
-    {
+
         Scanner sc = new Scanner(System.in);
 
         //Display Menu
@@ -54,6 +52,5 @@ public class Program
             case 5:
                 System.out.println("----");
         }
->>>>>>> a46dedd237c5b02a99a261ee4406e2ca6e1e655d
     }
 }
