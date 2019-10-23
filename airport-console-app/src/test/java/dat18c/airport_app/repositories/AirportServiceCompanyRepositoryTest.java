@@ -10,41 +10,46 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AirportServiceCompanyRepositoryTest {
-
+class AirportServiceCompanyRepositoryTest 
+{
     @BeforeEach
-    void setUp() {
+    void setUp() 
+    {
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown() 
+    {
     }
 
     @Test
-    void fetchAll() {
+    void fetchAll() 
+    {
     }
 
     @Test
-    void findById() {
+    void findById() 
+    {
     }
 
     @Test
-    void update() {
+    void update() 
+    {
     }
 
     @Test
-    void create() {
+    void create() 
+    {
     }
 
     @Test
     void deleteById()
     {
-
-
     }
 
     @Test
-    void deleteServiceSelskab() throws SQLException {
+    void deleteServiceSelskab() throws SQLException 
+    {
         System.out.println("Test");
         IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();
@@ -56,6 +61,8 @@ class AirportServiceCompanyRepositoryTest {
     }
 
     @Test
-    void insert() {
+    void insert() 
+    {
+        
     }
 }

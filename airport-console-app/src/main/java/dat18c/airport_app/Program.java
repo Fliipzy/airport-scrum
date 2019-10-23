@@ -2,10 +2,11 @@ package dat18c.airport_app;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import dat18c.airport_app.db.DatabaseConnection;
+import dat18c.airport_app.models.AirplaneParkingSpot;
 import dat18c.airport_app.models.Arrival;
+import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 import dat18c.airport_app.repositories.ArrivalRepository;
 
 /**
@@ -15,6 +16,26 @@ public class Program
 {
     public static void main(String[] args) 
     {
+        try 
+        {
+            DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+            dbConnection.connect();
+            
+            AirplaneParkingSpotRepository repo = new AirplaneParkingSpotRepository(dbConnection);
+            List<AirplaneParkingSpot> parkingSpots = repo.fetchAll();
+
+            for (AirplaneParkingSpot a : parkingSpots) 
+            {
+                System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
+                + ", Size:\t" + a.getSize().toString());    
+            }
+            
+        } catch (Exception e) 
+        {
+
+        }
+
+
         /*
         Scanner sc = new Scanner(System.in);
 

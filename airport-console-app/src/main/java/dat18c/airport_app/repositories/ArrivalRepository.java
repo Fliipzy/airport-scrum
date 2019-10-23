@@ -49,25 +49,29 @@ public class ArrivalRepository implements ICrud<Arrival>
     }
 
     @Override
-    public Arrival findById(int id) throws SQLException {
+    public Arrival findById(int id) throws SQLException 
+    {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public void update(Arrival t) throws SQLException {
+    public void update(Arrival t) throws SQLException 
+    {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void create(Arrival t) throws SQLException {
+    public void create(Arrival t) throws SQLException 
+    {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void deleteById(int id) throws SQLException {
+    public void deleteById(int id) throws SQLException 
+    {
         // TODO Auto-generated method stub
 
     }
