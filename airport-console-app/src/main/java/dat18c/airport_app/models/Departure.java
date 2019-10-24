@@ -37,4 +37,10 @@ public class Departure
     {
         return departureDate;
     }
+
+    @Override
+    public String toString()
+    {
+        return String.format("[Departure (airplane: %s)]", airplane.getName());
+    }
 }

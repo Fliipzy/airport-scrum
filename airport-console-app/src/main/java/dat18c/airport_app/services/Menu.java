@@ -2,11 +2,9 @@ package dat18c.airport_app.services;
 
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.models.AirplaneParkingSpot;
+import dat18c.airport_app.models.Arrival;
 import dat18c.airport_app.models.Departure;
-import dat18c.airport_app.repositories.AirlineRepository;
-import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
-import dat18c.airport_app.repositories.AirportServiceCompanyRepository;
-import dat18c.airport_app.repositories.DepartureRepository;
+import dat18c.airport_app.repositories.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,6 +16,7 @@ public class Menu {
     static AirlineRepository airlineRepository;
     static DepartureRepository departureRepository;
     static AirplaneParkingSpotRepository airplaneParkingSpotRepository;
+    static ArrivalRepository arrivalrepository;
 
 
     public void printMenu() throws SQLException {
@@ -28,7 +27,7 @@ public class Menu {
         airlineRepository = new AirlineRepository(dbConnection);
         departureRepository = new DepartureRepository(dbConnection);
         airplaneParkingSpotRepository = new AirplaneParkingSpotRepository(dbConnection);
-
+        arrivalrepository = new ArrivalRepository(dbConnection);
 
         System.out.println("1\t Service for airplanes");
         System.out.println("2\t Airlines");
@@ -45,6 +44,7 @@ public class Menu {
         switch (sc.nextInt()) {
             case 1:
                 System.out.println("Service for airplanes");
+
 
                 if (valg == 1) {
                     System.out.println("Add Flight information ");
@@ -96,11 +96,11 @@ public class Menu {
                     System.out.println("Show all departures");
                     //departureRepository.fetchAll();
 
-                    DepartureRepository deprepo = new DepartureRepository(dbConnection);
-                    List<Departure> departureRepositories = deprepo.fetchAll();
+
+                    List<Departure> departureRepositories = departureRepository.fetchAll();
 
                     for (Departure d: departureRepositories) {
-                        System.out.println("Airplane\t" + d.getAirplane() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
+                        System.out.println("Airplane\t" + d.toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
 
                     }
                 }
@@ -110,13 +110,12 @@ public class Menu {
             {
                 if (valg == 1) {
 
-                    AirplaneParkingSpotRepository repo = new AirplaneParkingSpotRepository(dbConnection);
-                    List<AirplaneParkingSpot> parkingSpots = repo.fetchAll();
+                    List<AirplaneParkingSpot> parkingSpots = airplaneParkingSpotRepository.fetchAll();
 
                     for (AirplaneParkingSpot a : parkingSpots) {
                         System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
                                 + ", Size:\t" + a.getSize().toString());
-                        
+
                     }if (valg == 2) {
 
                         System.out.println("Move plane");
@@ -129,6 +128,12 @@ public class Menu {
             }
 
             case 5:
+                System.out.println("Arrival");
+
+                if (valg ==1){
+
+
+                }
 
 
         }

@@ -21,12 +21,18 @@ public class Program {
         dbConnection.connect();
 
 
-        DepartureRepository deprepo = new DepartureRepository(dbConnection);
+
+        
+
+
+        /*DepartureRepository deprepo = new DepartureRepository(dbConnection);
         List<Departure> departureRepositories = deprepo.fetchAll();
 
         for (Departure d : departureRepositories) {
-            System.out.println("Airplane\t" + d.getAirplane().toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
+            System.out.println("Airplane\t" + d.toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
         }
+
+        */
             /*StandpladsService standpladsService = new StandpladsService(dbConnection);
                                 AirplaneParkingSpotRepository repo         = new AirplaneParkingSpotRepository(dbConnection);
                             }List<AirplaneParkingSpot>     parkingSpots = repo.fetchAll();
