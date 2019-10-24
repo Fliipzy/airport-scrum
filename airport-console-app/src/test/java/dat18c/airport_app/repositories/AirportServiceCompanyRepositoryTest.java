@@ -17,17 +17,20 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany> {
+class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany> 
+{
     private Connection connection;
     static Scanner input;
     private ArrayList<String> list;
 
     @BeforeEach
-    void setUp() {
+    void setUp() 
+    {
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown() 
+    {
     }
 
 
@@ -81,7 +84,8 @@ class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany
     }
 
     @Test
-    void deleteServiceSelskab() throws SQLException {
+    void deleteServiceSelskab() throws SQLException 
+    {
         System.out.println("Test");
         IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();

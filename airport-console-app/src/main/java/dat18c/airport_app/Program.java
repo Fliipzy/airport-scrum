@@ -1,20 +1,10 @@
 package dat18c.airport_app;
 
-import dat18c.airport_app.db.DatabaseConnection;
-import dat18c.airport_app.db.interfaces.IDatabaseConnection;
-import dat18c.airport_app.models.Airline;
-import dat18c.airport_app.repositories.AirlineRepository;
-import dat18c.airport_app.repositories.AirportServiceCompanyRepository;
-
-import java.sql.SQLException;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import dat18c.airport_app.db.DatabaseConnection;
-import dat18c.airport_app.models.Arrival;
-import dat18c.airport_app.repositories.ArrivalRepository;
+import dat18c.airport_app.models.AirplaneParkingSpot;
+import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 
 /**
  * Hello world!
@@ -23,38 +13,45 @@ public class Program
 {
     public static void main(String[] args) 
     {
-        /*
-        Scanner sc = new Scanner(System.in);
-
-    public static void main(String[] args) throws SQLException {
-        IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
-        dbConnection.connect();
-
-        AirportServiceCompanyRepository airportService = new AirportServiceCompanyRepository(dbConnection);
-        AirlineRepository airlineRepository = new AirlineRepository(dbConnection);
-
-        //airlineRepository.create();
-        //airlineRepository.deleteairLineInfo();
 
         while (true) 
         {
-            printMenu();
-            int choice = getInt();
-
-            switch (choice)
+            
+            System.out.println("Want to see airplane parking spots?");
+            System.console().readLine();
+            
+            try 
             {
-                case 1:
-                    System.out.println("Flight Information");
-                case 2:
-                    System.out.println("Arrivals and Depatures");
-                case 3:
-                    System.out.println("Airplane Service");
-                case 4:
-                    System.out.println("Apron");
-                case 5:
-                    System.out.println("----");
+                DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+                dbConnection.connect();
+                
+                AirplaneParkingSpotRepository repo = new AirplaneParkingSpotRepository(dbConnection);
+                List<AirplaneParkingSpot> parkingSpots = repo.fetchAll();
+                
+                for (AirplaneParkingSpot a : parkingSpots) 
+                {
+                    System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
+                    + ", Size:\t" + a.getSize().toString());    
+                }
+                
+            } 
+            catch (Exception e) 
+            {
             }
+            
+            System.out.println("Are you finished looking?");
+            System.console().readLine();
+            
+            try 
+            {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } 
+            catch (Exception e) 
+            {
+            }
+            
         }
+<<<<<<< HEAD
 
         //Display Menu
 
@@ -68,6 +65,10 @@ public class Program
     }
 
 
+=======
+    }
+        
+>>>>>>> f581fc923a3e513c5de56433b80c3ae59a47b448
     private static void printMenu()
     {
         System.out.println("1\t Flight information");
