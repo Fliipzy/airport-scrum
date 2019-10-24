@@ -23,6 +23,14 @@ public class AirplaneParkingSpot
         this.isOccupied = isOccupied;
     }
 
+    /**
+     * @return the airplane
+     */
+    public Airplane getAirplane() 
+    {
+        return airplane;
+    }
+
     public Size getSize() 
     {
         return size;
@@ -35,7 +43,7 @@ public class AirplaneParkingSpot
 
     public boolean isOccupied() 
     {
-        return isOccupied;
+        return (airplane == null) ? false : true;
     }
 
     @Override

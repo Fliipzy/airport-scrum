@@ -1,116 +1,52 @@
 package dat18c.airport_app.utils;
 
-import dat18c.airport_app.models.Airplane;
 import dat18c.airport_app.models.AirplaneParkingSpot;
-import dat18c.airport_app.repositories.AirplaneRepository;
-import dat18c.airport_app.utils.interfaces.ICommand;
+import dat18c.airport_app.models.enums.Size;
 
-public class AirportServiceTimer implements ICommand
+public class AirportServiceTimer
 {
-
-    boolean isReady = false;
-    AirplaneParkingSpot airplaneParkingSpot;
-    Airplane airplane;
-    public boolean preparingAirplane()
+    public boolean preparingAirplane(AirplaneParkingSpot parkingSpot)
     {
-        switch (airplaneParkingSpot.getSize())
+        if (!parkingSpot.isOccupied()) 
         {
-            case SMALL: {
-                switch (airplane.getSize()) {
-                    case SMALL:
-                        if (airplaneParkingSpot.isOccupied()) {
-                    /*System.out.println("Passagers exiting");
-                    Timer passagersOut = new Timer(5000, this, true);
-                    passagersOut.start();
-                    passagersOut.stopTimer();
+            return false;
+        }
 
-                    System.out.println("Luggage out");
-                    Timer luggage = new Timer(10000, this, true);
-                    luggage.start();
-                    luggage.stopTimer();
-
-                    System.out.println("Taxi to parkingSpot");
-                    Timer taxi = new Timer(12000, this, true);
-                    taxi.start();
-                    taxi.stopTimer();*/
-                            System.out.println("Adding fuel");
-                            Timer fuel = new Timer(10000, this, true);
-                            fuel.start();
-                            fuel.interrupt();
-                            System.out.println("Cleaning plane");
-                            Timer cleaning = new Timer(30000, this, true);
-                            cleaning.start();
-                            cleaning.interrupt();
-                        }
+        switch (parkingSpot.getSize())
+        {
+            case SMALL: 
+            {
+                if (parkingSpot.getAirplane().getSize() == Size.SMALL)
+                {
+                    doServices(10000, 20000);
                 }
             }
-            case MEDIUM: {
-                        switch (airplane.getSize()) {
-                            case MEDIUM:
-                                if (airplaneParkingSpot.isOccupied()) {
-
-                    /*System.out.println("Passagers exiting");
-                    Timer passagersOut = new Timer(10000, this, true);
-                    passagersOut.start();
-                    passagersOut.stopTimer();
-
-                    System.out.println("Luggage out");
-                    Timer luggage = new Timer(15000, this, true);
-                    luggage.start();
-                    luggage.stopTimer();
-
-                    System.out.println("Taxi to parkingSpot");
-                    Timer taxi = new Timer(10000, this, true);
-                    taxi.start();
-                    taxi.stopTimer();*/
-                                    System.out.println("Adding fuel");
-                                    Timer fuel = new Timer(20000, this, true);
-                                    fuel.start();
-                                    fuel.interrupt();
-                                    System.out.println("Cleaning plane");
-                                    Timer cleaning = new Timer(40000, this, true);
-                                    cleaning.start();
-                                    cleaning.interrupt();
-                                    isReady = true;
-                                    break;
-                                }
-                        }
-                    }
-                    case BIG: {
-                     switch (airplane.getSize()) {
-                         case BIG:
-                /*System.out.println("Passagers exiting");
-                Timer passagersOut = new Timer(15000, this, true);
-                passagersOut.start();
-                passagersOut.stopTimer();
-
-                System.out.println("Luggage out");
-                Timer luggage = new Timer(20000, this, true);
-                luggage.start();
-                luggage.stopTimer();
-
-                System.out.println("Taxi to parkingSpot");
-                Timer taxi = new Timer(15000, this, true);
-                taxi.start();
-                taxi.stopTimer();*/
-                             System.out.println("Adding fuel");
-                             Timer fuel = new Timer(30000, this, true);
-                             fuel.start();
-                             fuel.interrupt();
-                             System.out.println("Cleaning plane");
-                             Timer cleaning = new Timer(60000, this, true);
-                             cleaning.start();
-                             cleaning.interrupt();
-                             isReady = true;
-                             break;
-                     }
-                 }
-             }
-             return isReady;
+            case MEDIUM: 
+            {
+                if (parkingSpot.getAirplane().getSize() == Size.MEDIUM)
+                {
+                    doServices(10000, 20000);
+                }
+            }
+            case BIG: 
+            {
+                if (parkingSpot.getAirplane().getSize() == Size.BIG)
+                {
+                    doServices(10000, 20000);
+                }
+            }
+        }
+        return true;
     }
 
-    @Override
-    public void execute() {
+    private void doServices(long fuelTime, long cleanTime)
+    {
+        System.out.println("Adding fuel to the airplane!");
+        Timer fuel = new Timer(fuelTime, new FuelCommand(), false);
+        fuel.start();
 
+        System.out.println("Cleaning the airplane!");
+        Timer cleaning = new Timer(cleanTime, new CleaningCommand(), false);
+        cleaning.start();             
     }
 }
