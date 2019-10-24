@@ -75,6 +75,6 @@ public class AirplaneParkingSpotRepository implements ICrud<AirplaneParkingSpot>
         Size size = Size.fromInt(resultSet.getInt("størrelse"));
         boolean available = resultSet.getBoolean("available");
 
-        return new AirplaneParkingSpot(size, number ,null, available);
+        return new AirplaneParkingSpot(size, number ,null);
     }
 }

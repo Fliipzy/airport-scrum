@@ -5,5 +5,5 @@ package dat18c.airport_app.utils.interfaces;
  */
 public interface ICommand 
 {
-    void execute();    
+    void execute();
 }

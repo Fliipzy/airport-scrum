@@ -2,20 +2,15 @@ package dat18c.airport_app.models;
 
 public class Staff
 {
-    int cleaningGroup;
+    int amount;
 
-    public int getCleaningGroup()
+    public Staff(int amount)
     {
-        return cleaningGroup;
-    }
-    public void setCleaningGroup(int cleaningGroup)
-    {
-        this.cleaningGroup = cleaningGroup;
+        this.amount = amount;
     }
 
-    public Staff(int cleaningGroup)
+    public int getAmount()
     {
-        this.cleaningGroup = cleaningGroup;
+        return amount;
     }
-
 }

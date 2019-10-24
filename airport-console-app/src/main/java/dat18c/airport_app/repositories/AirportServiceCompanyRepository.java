@@ -49,10 +49,10 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
     }
 
     @Override
-    public void deleteById(int id) throws SQLException
-    {}
-    public void deleteServiceSelskab() throws SQLException
-    {
+    public void deleteById(int id) throws SQLException {
+    }
+
+    public void deleteServiceSelskab() throws SQLException {
         input = new Scanner(System.in);
         String sql = "DELETE FROM serviceselskab WHERE idServiceSelskab=?";
 
@@ -60,8 +60,7 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
         statement.setString(1, input.next());
 
         int rowsDeleted = statement.executeUpdate();
-        if(rowsDeleted > 0)
-        {
+        if (rowsDeleted > 0) {
             System.out.println("ServiceSelskab deleted");
         }
 
@@ -71,14 +70,15 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
         return null;
     }
 
-    //Denne metode lavet en insert i serviceselskab tabel.
+    // Denne metode lavet en insert i serviceselskab tabel.
     public void insert() {
 
         input = new Scanner(System.in);
-        String sql = "INSERT INTO serviceselskab(idServiceSelskab, size, Taxi_ind_ved_ankomst, Passagerer_ud," +
-                "Bagage_ud, Brændstof_påfyldning, Rengøring, Bagage_ind, Passagerer_ind, Taxi_ud_til_afgang," +
-                "Taxi_til_og_fra_ventepladser, Personale_til_og_fra_naboplads, Personale_til_og_fra_øvrige_i_egen_terminal," +
-                "Personale_til_og_fra_den_anden_terminal ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql =
+                "INSERT INTO serviceselskab(idServiceSelskab, size, Taxi_ind_ved_ankomst, Passagerer_ud,"
+                        + "Bagage_ud, Brændstof_påfyldning, Rengøring, Bagage_ind, Passagerer_ind, Taxi_ud_til_afgang,"
+                        + "Taxi_til_og_fra_ventepladser, Personale_til_og_fra_naboplads, Personale_til_og_fra_øvrige_i_egen_terminal,"
+                        + "Personale_til_og_fra_den_anden_terminal ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -120,14 +120,15 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
         }
     }
 
-    public void updateServiceTable(){
+    public void updateServiceTable() {
 
         input = new Scanner(System.in);
 
-        String sql = "UPDATE serviceselskab SET idServiceSelskab=?, size=?, Taxi_ind_ved_ankomst=?, Passagerer_ud=?," +
-                "Bagage_ud=?, Brændstof_påfyldning=?, Rengøring=?, Bagage_ind=?, Passagerer_ind=?, Taxi_ud_til_afgang=?," +
-                "Taxi_til_og_fra_ventepladser=?, Personale_til_og_fra_naboplads=?, Personale_til_og_fra_øvrige_i_egen_terminal=?," +
-                "Personale_til_og_fra_den_anden_terminal=?";
+        String sql =
+                "UPDATE serviceselskab SET idServiceSelskab=?, size=?, Taxi_ind_ved_ankomst=?, Passagerer_ud=?,"
+                        + "Bagage_ud=?, Brændstof_påfyldning=?, Rengøring=?, Bagage_ind=?, Passagerer_ind=?, Taxi_ud_til_afgang=?,"
+                        + "Taxi_til_og_fra_ventepladser=?, Personale_til_og_fra_naboplads=?, Personale_til_og_fra_øvrige_i_egen_terminal=?,"
+                        + "Personale_til_og_fra_den_anden_terminal=?";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);

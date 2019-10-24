@@ -1,12 +1,5 @@
 package dat18c.airport_app.repositories;
 
-<<<<<<< HEAD
-import dat18c.airport_app.db.interfaces.IDatabaseConnection;
-import dat18c.airport_app.models.Airline;
-import dat18c.airport_app.repositories.interfaces.ICrud;
-
-=======
->>>>>>> 707f965d85d64d9a0c8b35c0a25c895d474e0111
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,13 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-<<<<<<< HEAD
-=======
 import dat18c.airport_app.db.interfaces.IDatabaseConnection;
 import dat18c.airport_app.models.Airline;
 import dat18c.airport_app.repositories.interfaces.ICrud;
 
->>>>>>> 707f965d85d64d9a0c8b35c0a25c895d474e0111
 public class AirlineRepository implements ICrud<Airline> 
 {
     private Connection connection;
@@ -123,11 +113,7 @@ public class AirlineRepository implements ICrud<Airline>
 
         String sql = "UPDATE flyselskab SET navn=?";
 
-<<<<<<< HEAD
-        try 
-=======
         try
->>>>>>> 707f965d85d64d9a0c8b35c0a25c895d474e0111
         {
 
             System.out.println("Please chose the Airline you want to update");

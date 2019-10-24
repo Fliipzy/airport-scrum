@@ -10,7 +10,6 @@ public class Timer extends Thread
     private long sleepInterval;
     private ICommand command;
     private boolean loop;
-    private boolean continueRunning = true;
 
     public Timer(long sleepInterval, ICommand command, boolean loop) 
     {
