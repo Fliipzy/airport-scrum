@@ -6,17 +6,13 @@ import java.util.List;
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.models.AirplaneParkingSpot;
 import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
-<<<<<<< HEAD
+
 import dat18c.airport_app.services.StandpladsService;
-=======
-import dat18c.airport_app.utils.Timer;
-import dat18c.airport_app.utils.interfaces.ICommand;
->>>>>>> b78082cf4784851cf18a8a27de6430fe73dc032a
 
 /**
  * Hello world!
  */
-<<<<<<< HEAD
+
 public class Program 
 {
     public static void main(String[] args) throws SQLException {
@@ -24,11 +20,20 @@ public class Program
         dbConnection.connect();
 
         StandpladsService standpladsService = new StandpladsService(dbConnection);
-        standpladsService.movePlane();
+        AirplaneParkingSpotRepository repo         = new AirplaneParkingSpotRepository(dbConnection);
+        List<AirplaneParkingSpot>     parkingSpots = repo.fetchAll();
+
+        for (AirplaneParkingSpot a : parkingSpots)
+        {
+            System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
+                    + ", Size:\t" + a.getSize().toString());
+        }
+
+//        standpladsService.movePlane();
 
 
 /*
-=======
+
 public class Program {
     public static void main(String[] args) {
 
@@ -56,7 +61,7 @@ public class Program {
         timer.stopTimer();
 
         /*
->>>>>>> b78082cf4784851cf18a8a27de6430fe73dc032a
+
         while (true) 
         {
 
@@ -91,7 +96,7 @@ public class Program {
             } 
             catch (Exception e) 
             {
-<<<<<<< HEAD
+
             }
             
         }
@@ -134,10 +139,9 @@ public class Program {
         }
     }
  */
-=======
-            }*/
+
+            }
    
         
->>>>>>> b78082cf4784851cf18a8a27de6430fe73dc032a
+
     }
-}

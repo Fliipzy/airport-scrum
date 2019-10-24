@@ -27,16 +27,6 @@ public class StandpladsService
         dbConnection.connect();
 
 
-        AirplaneParkingSpotRepository repo         = new AirplaneParkingSpotRepository(dbConnection);
-        List<AirplaneParkingSpot>     parkingSpots = repo.fetchAll();
-
-        for (AirplaneParkingSpot a : parkingSpots)
-        {
-            System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
-                    + ", Size:\t" + a.getSize().toString());
-        }
-
-
         scan = new Scanner(System.in);
 
         String sql = "UPDATE standplads SET available=? WHERE standpladsNummer=?";
