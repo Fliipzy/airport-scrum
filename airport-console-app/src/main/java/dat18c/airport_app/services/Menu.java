@@ -60,6 +60,7 @@ public class Menu {
                         System.out.println("Delete service");
 
                         airportServiceCompanyRepository.deleteServiceSelskab();
+                    }
 
                         if (valg == 3) {
 
@@ -69,10 +70,11 @@ public class Menu {
 
                         if (valg == 4){
                             System.out.println("Show all service");
-                            airportServiceCompanyRepository.fetchAll();
+                            System.out.println("NOT WORKING");
+                            //TODO FIX FETCH ALL
+                            //airportServiceCompanyRepository.fetchAll();
                         }
-
-                    }
+                        break;
 
                 case 2:
                     System.out.println("Airline's");
@@ -90,7 +92,7 @@ public class Menu {
                         System.out.println("Delte Airline");
                         airlineRepository.updateAirlineTable();
                     }
-
+                    break;
 
                 case 3:
                     System.out.println("Departues");
@@ -112,7 +114,7 @@ public class Menu {
                 case 4:
                     System.out.println("Show airport parking spot");
                     valg = sc.nextInt();
-                {
+
                     if (valg == 1) {
 
                         List<AirplaneParkingSpot> parkingSpots = airplaneParkingSpotRepository.fetchAll();
@@ -122,6 +124,7 @@ public class Menu {
                                     + ", Size:\t" + a.getSize().toString());
 
                         }
+                    }
                         if (valg == 2) {
 
                             System.out.println("Move plane");
@@ -129,9 +132,7 @@ public class Menu {
                             StandpladsService standpladsService = new StandpladsService(dbConnection);
                             standpladsService.movePlane();
                         }
-
-                    }
-                }
+                        break;
 
                 case 5:
                     System.out.println("Arrival");
@@ -159,6 +160,7 @@ public class Menu {
                             System.out.println("Size:\t" + a.getSize() + " Name:\t " + a.getName());
                         }
                     }
+                    break;
                 case 9:
                     System.out.println("EXIT");
                     System.exit(0);
