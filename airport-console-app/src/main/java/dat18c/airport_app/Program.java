@@ -51,24 +51,20 @@ public class Program
             }
             
         }
-<<<<<<< HEAD
 
         //Display Menu
-
+/**
 
         Scanner sc = new Scanner(System.in);
 
         //Getting user input
-        */
+
 
         printMenu();
     }
 
-
-=======
     }
-        
->>>>>>> f581fc923a3e513c5de56433b80c3ae59a47b448
+
     private static void printMenu()
     {
         System.out.println("1\t Flight information");
@@ -92,5 +88,7 @@ public class Program
                 
             }
         }
+    }
+ */
     }
 }
