@@ -1,12 +1,5 @@
 package dat18c.airport_app.repositories;
 
-import dat18c.airport_app.db.interfaces.IDatabaseConnection;
-import dat18c.airport_app.models.Airline;
-import dat18c.airport_app.models.Airplane;
-import dat18c.airport_app.models.Departure;
-import dat18c.airport_app.models.enums.Size;
-import dat18c.airport_app.repositories.interfaces.ICrud;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,9 +8,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * DepartureRepository
- */
+import dat18c.airport_app.db.interfaces.IDatabaseConnection;
+import dat18c.airport_app.models.Airline;
+import dat18c.airport_app.models.Airplane;
+import dat18c.airport_app.models.Departure;
+import dat18c.airport_app.models.enums.Size;
+import dat18c.airport_app.repositories.interfaces.ICrud;
+
+/** DepartureRepository */
 public class DepartureRepository implements ICrud<Departure> 
 {
     private Connection connection;
