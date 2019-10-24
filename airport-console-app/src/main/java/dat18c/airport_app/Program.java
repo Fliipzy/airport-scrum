@@ -1,24 +1,25 @@
 package dat18c.airport_app;
 
-import java.util.List;
-
-import dat18c.airport_app.db.DatabaseConnection;
-import dat18c.airport_app.models.AirplaneParkingSpot;
-import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
+import dat18c.airport_app.userconfig.UserConfig;
 import dat18c.airport_app.utils.Timer;
 import dat18c.airport_app.utils.interfaces.ICommand;
 
 /**
  * Hello world!
  */
-public class Program {
-    public static void main(String[] args) {
+public class Program 
+{
+    public static void main(String[] args) 
+    {
+        UserConfig.StartConfiguration();
+        System.out.println(UserConfig.getUserName());
 
-        ICommand command = new ICommand() {
-
+        ICommand command = new ICommand(){
+        
             @Override
-            public void execute() {
-                System.out.println("hello!");
+            public void execute() 
+            {
+                System.out.println("Hello, World!");
             }
         };
 
@@ -27,53 +28,19 @@ public class Program {
 
         try 
         {
-            Thread.sleep(4000);
+            Thread.sleep(3000);
+            timer.interrupt();    
         } 
-        catch (InterruptedException e) 
+        catch (Exception e) 
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            //TODO: handle exception
         }
 
-        timer.stopTimer();
 
-        /*
-        while (true) 
-        {
+    }
 
-            System.out.println("Want to see airplane parking spots?");
-            System.console().readLine();
-            
-            try 
-            {
-                DatabaseConnection dbConnection = DatabaseConnection.getInstance();
-                dbConnection.connect();
-                
-                AirplaneParkingSpotRepository repo = new AirplaneParkingSpotRepository(dbConnection);
-                List<AirplaneParkingSpot> parkingSpots = repo.fetchAll();
-                
-                for (AirplaneParkingSpot a : parkingSpots) 
-                {
-                    System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
-                    + ", Size:\t" + a.getSize().toString());    
-                }
-                
-            } 
-            catch (Exception e) 
-            {
-            }
-            
-            System.out.println("Are you finished looking?");
-            System.console().readLine();
-            
-            try 
-            {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } 
-            catch (Exception e) 
-            {
-            }*/
-   
+    private static void promptMenu()
+    {
         
     }
 }
