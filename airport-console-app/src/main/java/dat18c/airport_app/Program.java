@@ -5,29 +5,38 @@ import java.util.List;
 
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.models.AirplaneParkingSpot;
+import dat18c.airport_app.models.Departure;
 import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 
+import dat18c.airport_app.repositories.DepartureRepository;
 import dat18c.airport_app.services.StandpladsService;
 
 /**
  * Hello world!
  */
 
-public class Program 
-{
+public class Program {
     public static void main(String[] args) throws SQLException {
         DatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();
 
-        StandpladsService standpladsService = new StandpladsService(dbConnection);
-        AirplaneParkingSpotRepository repo         = new AirplaneParkingSpotRepository(dbConnection);
-        List<AirplaneParkingSpot>     parkingSpots = repo.fetchAll();
+
+        DepartureRepository deprepo = new DepartureRepository(dbConnection);
+        List<Departure> departureRepositories = deprepo.fetchAll();
+
+        for (Departure d : departureRepositories) {
+            System.out.println("Airplane\t" + d.getAirplane().toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
+        }
+            /*StandpladsService standpladsService = new StandpladsService(dbConnection);
+                                AirplaneParkingSpotRepository repo         = new AirplaneParkingSpotRepository(dbConnection);
+                            }List<AirplaneParkingSpot>     parkingSpots = repo.fetchAll();
 
         for (AirplaneParkingSpot a : parkingSpots)
         {
             System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
                     + ", Size:\t" + a.getSize().toString());
         }
+        */
 
 //        standpladsService.movePlane();
 
@@ -105,7 +114,7 @@ public class Program {
 /**
 =======
 */
-        //Display Menu
+            //Display Menu
 /*
 
         Scanner sc = new Scanner(System.in);
@@ -145,8 +154,7 @@ public class Program {
     }
  */
 
-            }
-   
-        
+        }
+
 
     }

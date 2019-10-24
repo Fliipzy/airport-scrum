@@ -1,12 +1,15 @@
 package dat18c.airport_app.services;
 
 import dat18c.airport_app.db.DatabaseConnection;
+import dat18c.airport_app.models.AirplaneParkingSpot;
+import dat18c.airport_app.models.Departure;
 import dat18c.airport_app.repositories.AirlineRepository;
 import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 import dat18c.airport_app.repositories.AirportServiceCompanyRepository;
 import dat18c.airport_app.repositories.DepartureRepository;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -15,7 +18,7 @@ public class Menu {
     static AirlineRepository airlineRepository;
     static DepartureRepository departureRepository;
     static AirplaneParkingSpotRepository airplaneParkingSpotRepository;
-    
+
 
     public void printMenu() throws SQLException {
         DatabaseConnection dbConnection = DatabaseConnection.getInstance();
@@ -91,16 +94,42 @@ public class Menu {
                 System.out.println("Departues");
                 if (valg == 1) {
                     System.out.println("Show all departures");
-                    departureRepository.fetchAll();
+                    //departureRepository.fetchAll();
+
+                    DepartureRepository deprepo = new DepartureRepository(dbConnection);
+                    List<Departure> departureRepositories = deprepo.fetchAll();
+
+                    for (Departure d: departureRepositories) {
+                        System.out.println("Airplane\t" + d.getAirplane() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
+
+                    }
                 }
 
             case 4:
                 System.out.println("Show airport parking spot");
             {
-                airplaneParkingSpotRepository.fetchAll();
+                if (valg == 1) {
+
+                    AirplaneParkingSpotRepository repo = new AirplaneParkingSpotRepository(dbConnection);
+                    List<AirplaneParkingSpot> parkingSpots = repo.fetchAll();
+
+                    for (AirplaneParkingSpot a : parkingSpots) {
+                        System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
+                                + ", Size:\t" + a.getSize().toString());
+                        
+                    }if (valg == 2) {
+
+                        System.out.println("Move plane");
+
+                        StandpladsService standpladsService = new StandpladsService(dbConnection);
+                        standpladsService.movePlane();
+                    }
+
+                }
             }
 
             case 5:
+
 
         }
 
