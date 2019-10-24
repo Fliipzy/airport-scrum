@@ -1,6 +1,6 @@
 package dat18c.airport_app;
 
-<<<<<<< HEAD
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,26 +13,29 @@ import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 import dat18c.airport_app.repositories.ArrivalRepository;
 import dat18c.airport_app.repositories.DepartureRepository;
 import dat18c.airport_app.services.StandpladsService;
-=======
+
 import dat18c.airport_app.userconfig.UserConfig;
 import dat18c.airport_app.utils.Timer;
 import dat18c.airport_app.utils.interfaces.ICommand;
->>>>>>> ef343ad9fdf4fc14aacd9c0ccfbe3aef1a753044
+
 
 /**
  * Hello world!
  */
-public class Program 
-{
-    public static void main(String[] args) 
-    {
+public class Program {
+    public static void main(String[] args) {
         UserConfig.StartConfiguration();
         System.out.println(UserConfig.getUserName());
 
+<<<<<<< HEAD
 public class Program {
     public static void main(String[] args) throws SQLException {
+=======
+>>>>>>> ad19e271ce2e0cb3e7a7a8cad4bc828093cbf28b
         DatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();
+    }
+}
 
 
         /*
@@ -98,4 +101,5 @@ public class Program {
             //TODO: handle exception
         }
     }
-}
+    
+ */
