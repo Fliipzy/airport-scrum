@@ -52,30 +52,7 @@ public class Program
             
         }
 
-        //Display Menu
 /**
-
-        Scanner sc = new Scanner(System.in);
-
-        //Getting user input
-
-
-        printMenu();
-    }
-
-    }
-
-    private static void printMenu()
-    {
-        System.out.println("1\t Flight information");
-        System.out.println("2\t Arrivals and Depatures");
-        System.out.println("3\t Airplane Service");
-        System.out.println("4\t Apron");
-        System.out.println("5\t Show Airline ");
-        System.out.println("Please enter your choice");
-    }
-
-    private static int getInt()
     {
         while (true) 
         {
