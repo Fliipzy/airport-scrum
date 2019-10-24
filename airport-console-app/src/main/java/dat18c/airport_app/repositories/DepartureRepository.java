@@ -1,10 +1,8 @@
 package dat18c.airport_app.repositories;
 
-import com.mysql.cj.protocol.Resultset;
 import dat18c.airport_app.db.interfaces.IDatabaseConnection;
 import dat18c.airport_app.models.Airline;
 import dat18c.airport_app.models.Airplane;
-import dat18c.airport_app.models.Arrival;
 import dat18c.airport_app.models.Departure;
 import dat18c.airport_app.models.enums.Size;
 import dat18c.airport_app.repositories.interfaces.ICrud;
@@ -20,63 +18,65 @@ import java.util.List;
 /**
  * DepartureRepository
  */
-
-public class DepartureRepository implements ICrud<Departure> {
-
+public class DepartureRepository implements ICrud<Departure> 
+{
     private Connection connection;
 
     //Constructor
-    public DepartureRepository(IDatabaseConnection dbConnection){
+    public DepartureRepository(IDatabaseConnection dbConnection)
+    {
         this.connection = dbConnection.getConnection();
     }
 
     //CRUD metoder fra ICrud interface
     //Oversigt over Fly og Departure time
     @Override
-    public List<Departure> fetchAll() throws SQLException {
+    public List<Departure> fetchAll() throws SQLException 
+    {
         List<Departure> departures = new ArrayList<Departure>();
 
         String query = "SELECT fly_navn, fra_land, ankomst_tidspunkt," +
-                "        fly.flyselskab_navn, fly.størrelse FROM lufthavn.destination" +
-                "        INNER JOIN lufthavn.fly ON fly_navn = lufthavn.fly.navn";
+                " fly.flyselskab_navn, fly.størrelse FROM lufthavn.destination" +
+                " INNER JOIN lufthavn.fly ON fly_navn = lufthavn.fly.navn";
 
         //Tager imod query statement
         Statement statement = connection.createStatement();
         //Udfører query
         var rSet = statement.executeQuery(query);
 
-        while (rSet.next()) {
+        while (rSet.next()) 
+        {
             departures.add(mapToDeparture(rSet));
         }
 
         statement.close();
         rSet.close();
         return departures;
-
     }
 
     @Override
-    public Departure findById(int id) throws SQLException {
+    public Departure findById(int id) throws SQLException 
+    {
         return null;
     }
 
     @Override
-    public void update(Departure departure) throws SQLException {
-
+    public void update(Departure departure) throws SQLException 
+    {
     }
 
     @Override
-    public void create(Departure departure) throws SQLException {
-
+    public void create(Departure departure) throws SQLException 
+    {
     }
 
     @Override
-    public void deleteById(int id) throws SQLException {
-
+    public void deleteById(int id) throws SQLException 
+    {
     }
 
-
-    private Departure mapToDeparture(ResultSet rSet) throws SQLException {
+    private Departure mapToDeparture(ResultSet rSet) throws SQLException 
+    {
         String airplaneName = rSet.getString("fly_navn");
         String toCountry    = rSet.getString("fra_land");
         Date departureTime  = rSet.getDate("ankomst_tidspunkt");

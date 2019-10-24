@@ -1,6 +1,6 @@
 package dat18c.airport_app.models;
-import java.util.List;
 
+import java.util.List;
 
 public class Terminal
 {

@@ -16,9 +16,8 @@ public class Program
 
         while (true) 
         {
-            
             System.out.println("Want to see airplane parking spots?");
-            System.console().readLine();
+            InputHandler.waitForKeyPress();
             
             try 
             {
@@ -63,18 +62,5 @@ public class Program
         System.out.println("Please enter your choice");
     }
 
-    private static int getInt()
-    {
-        while (true) 
-        {
-            try 
-            {
-                return Integer.parseInt(System.console().readLine());    
-            } 
-            catch (NumberFormatException e) 
-            {
-                
-            }
-        }
-    }
+    
 }
