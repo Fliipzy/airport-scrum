@@ -20,7 +20,7 @@ public class Airplane
         this.airline = airline;
     }
 
-    public Airline getFlySelskab() 
+    public Airline getAirline() 
     {
         return airline;
     }

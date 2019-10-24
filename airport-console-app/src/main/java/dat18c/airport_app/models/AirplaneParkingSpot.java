@@ -7,6 +7,7 @@ public class AirplaneParkingSpot
     private Size size;
     private int number;
     private boolean isOccupied;
+    private Airplane airplane = null;
 
     public AirplaneParkingSpot(Size size, int number)
     {
@@ -14,11 +15,11 @@ public class AirplaneParkingSpot
         this.number = number;
     }
 
-    public AirplaneParkingSpot(Size size, int number, boolean isOccupied)
+    public AirplaneParkingSpot(Size size, int number, Airplane airplane)
     {
         this.size = size;
         this.number = number;
-        this.isOccupied = isOccupied;
+        this.airplane = airplane;
     }
 
     public Size getSize() 

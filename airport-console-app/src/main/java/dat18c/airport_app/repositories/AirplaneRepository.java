@@ -58,7 +58,7 @@ public class AirplaneRepository implements ICrud<Airplane>
     {
         var sql = String.format(
             "INSERT INTO fly (navn, flyselskab_navn, størrelse) VALUES ('%s', '%s', %s)",
-            t.getName(), t.getFlySelskab().getName(), t.getSize().ordinal());
+            t.getName(), t.getAirline().getName(), t.getSize().ordinal());
 
         var statement = connection.createStatement();
         statement.executeUpdate(sql);
