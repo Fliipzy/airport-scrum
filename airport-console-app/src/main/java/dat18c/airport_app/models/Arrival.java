@@ -35,4 +35,10 @@ public class Arrival
     {
         return arrivalTime;
     }
+
+    @Override
+    public String toString()
+    {
+        return String.format("[Arrival (airplane: %s)]", airplane.getName());
+    }
 }

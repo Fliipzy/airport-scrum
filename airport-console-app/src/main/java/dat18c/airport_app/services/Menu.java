@@ -131,8 +131,13 @@ public class Menu {
                 System.out.println("Arrival");
 
                 if (valg ==1){
+                   List<Arrival> arrivalList = arrivalrepository.fetchAll();
 
+                   for (Arrival a : arrivalList){
 
+                       System.out.println("Airplane:\t" + a.toString() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate());
+
+                   }
                 }
 
 

@@ -5,9 +5,11 @@ import java.util.List;
 
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.models.AirplaneParkingSpot;
+import dat18c.airport_app.models.Arrival;
 import dat18c.airport_app.models.Departure;
 import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 
+import dat18c.airport_app.repositories.ArrivalRepository;
 import dat18c.airport_app.repositories.DepartureRepository;
 import dat18c.airport_app.services.StandpladsService;
 
@@ -21,14 +23,20 @@ public class Program {
         dbConnection.connect();
 
 
+        /*
+        ArrivalRepository arrivalRepository = new ArrivalRepository(dbConnection);
 
-        
+         List<Arrival> arrivalList = arrivalRepository.fetchAll();
 
+                           for (Arrival a : arrivalList){
+                               System.out.println("Airplane:\t" + a.toString() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate());
+                           }
 
+                           */
         /*DepartureRepository deprepo = new DepartureRepository(dbConnection);
-        List<Departure> departureRepositories = deprepo.fetchAll();
+                               System.out.println("Airplane:\t" + a.getAirplane() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate());List<Departure> departureRepositories = deprepo.fetchAll();
 
-        for (Departure d : departureRepositories) {
+                           }for (Departure d : departureRepositories) {
             System.out.println("Airplane\t" + d.toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
         }
 
