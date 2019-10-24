@@ -150,7 +150,7 @@ public class Menu {
                     List<Airplane> airplanes = airplaneRepository.fetchAll();
 
                     for (Airplane a: airplanes){
-                        System.out.println("Airline\t" + a.getAirline() + "Size\t" + a.getSize() + "Name:" + a.getName());
+                        System.out.println("Size:\t" + a.getSize() + " Name:\t " + a.getName());
                     }
                 }
 

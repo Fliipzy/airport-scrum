@@ -5,11 +5,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import dat18c.airport_app.db.DatabaseConnection;
+import dat18c.airport_app.models.Airplane;
 import dat18c.airport_app.models.AirplaneParkingSpot;
 import dat18c.airport_app.models.Arrival;
 import dat18c.airport_app.models.Departure;
 import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 
+import dat18c.airport_app.repositories.AirplaneRepository;
 import dat18c.airport_app.repositories.ArrivalRepository;
 import dat18c.airport_app.repositories.DepartureRepository;
 import dat18c.airport_app.services.StandpladsService;
@@ -23,19 +25,18 @@ import dat18c.airport_app.utils.interfaces.ICommand;
  * Hello world!
  */
 public class Program {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         UserConfig.StartConfiguration();
         System.out.println(UserConfig.getUserName());
 
-<<<<<<< HEAD
-public class Program {
-    public static void main(String[] args) throws SQLException {
-=======
->>>>>>> ad19e271ce2e0cb3e7a7a8cad4bc828093cbf28b
+
         DatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();
-    }
+
 }
+
+
+
 
 
         /*
@@ -103,3 +104,5 @@ public class Program {
     }
     
  */
+        
+        }

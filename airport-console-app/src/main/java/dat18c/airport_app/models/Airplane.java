@@ -34,4 +34,10 @@ public class Airplane
     {
         return name;
     }
+
+    @Override
+    public String toString()
+    {
+        return String.format("[Airline (airline: %s)]", airline.getName());
+    }
 }
