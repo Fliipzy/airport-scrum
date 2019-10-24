@@ -1,19 +1,27 @@
 package dat18c.airport_app;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.models.AirplaneParkingSpot;
 import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
+import dat18c.airport_app.services.StandpladsService;
 
 /**
  * Hello world!
  */
 public class Program 
 {
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) throws SQLException {
+        DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+        dbConnection.connect();
 
+        StandpladsService standpladsService = new StandpladsService(dbConnection);
+        standpladsService.movePlane();
+
+
+/*
         while (true) 
         {
             
@@ -51,9 +59,9 @@ public class Program
             }
             
         }
-
+*/
         //Display Menu
-/**
+/*
 
         Scanner sc = new Scanner(System.in);
 
