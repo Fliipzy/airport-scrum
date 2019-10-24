@@ -39,6 +39,7 @@ public class Menu
         System.out.println("3\t Departures");
         System.out.println("4\t Show Parking spot");
         System.out.println("5\t Arrival ");
+        System.out.println("6\t Airplane ");
         System.out.println("9\t Exit Program ");
         System.out.println("Please enter your choice");
 
@@ -170,7 +171,7 @@ public class Menu
 
                         for (Airplane a : airplanes) 
                         {
-                            System.out.println("Size:\t" + a.getSize() + " Name:\t " + a.getName());
+                            System.out.println( "Name:\t " + a.getName() + "\tSize:\t" + a.getSize());
                         }
                     }
                     break;

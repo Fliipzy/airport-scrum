@@ -36,6 +36,18 @@ public class AirplaneParkingSpot
         return number;
     }
 
+    public void AddAirplane(Airplane airplane)
+    {
+        this.airplane = airplane;
+    }
+
+    public Airplane RemoveAirplane()
+    {
+        Airplane n_airplane = this.airplane;
+        this.airplane = null;
+        return n_airplane;
+    }
+
     public boolean isOccupied() 
     {
         return (airplane == null) ? false : true;
