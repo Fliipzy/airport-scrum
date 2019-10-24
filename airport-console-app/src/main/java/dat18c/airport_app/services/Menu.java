@@ -1,6 +1,7 @@
 package dat18c.airport_app.services;
 
 import dat18c.airport_app.db.DatabaseConnection;
+import dat18c.airport_app.models.Airplane;
 import dat18c.airport_app.models.AirplaneParkingSpot;
 import dat18c.airport_app.models.Arrival;
 import dat18c.airport_app.models.Departure;
@@ -17,6 +18,7 @@ public class Menu {
     static DepartureRepository departureRepository;
     static AirplaneParkingSpotRepository airplaneParkingSpotRepository;
     static ArrivalRepository arrivalrepository;
+    static AirplaneRepository airplaneRepository;
 
 
     public void printMenu() throws SQLException {
@@ -28,6 +30,7 @@ public class Menu {
         departureRepository = new DepartureRepository(dbConnection);
         airplaneParkingSpotRepository = new AirplaneParkingSpotRepository(dbConnection);
         arrivalrepository = new ArrivalRepository(dbConnection);
+        airplaneRepository = new AirplaneRepository(dbConnection);
 
         System.out.println("1\t Service for airplanes");
         System.out.println("2\t Airlines");
@@ -139,7 +142,17 @@ public class Menu {
 
                    }
                 }
+            case 6:
+                System.out.println("Airplane");
 
+
+                if (valg == 1){
+                    List<Airplane> airplanes = airplaneRepository.fetchAll();
+
+                    for (Airplane a: airplanes){
+                        System.out.println("Airline\t" + a.getAirline() + "Size\t" + a.getSize() + "Name:" + a.getName());
+                    }
+                }
 
         }
 

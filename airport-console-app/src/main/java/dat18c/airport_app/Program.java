@@ -29,7 +29,6 @@ public class Program
         UserConfig.StartConfiguration();
         System.out.println(UserConfig.getUserName());
 
-<<<<<<< HEAD
 public class Program {
     public static void main(String[] args) throws SQLException {
         DatabaseConnection dbConnection = DatabaseConnection.getInstance();
