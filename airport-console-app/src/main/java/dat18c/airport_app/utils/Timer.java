@@ -24,34 +24,32 @@ public class Timer extends Thread
     {
         if (loop) 
         {
-            while(continueRunning)
+            while(!Thread.currentThread().isInterrupted())
             {
                 try 
                 {
                     Thread.sleep(sleepInterval);
                     command.execute();
                 } 
-                catch (Exception e) 
+                catch (InterruptedException e) 
                 {
+                    System.out.println("Interrupted!");
+                    Thread.currentThread().interrupt();
                 }
             }
         }
         else
         {
             try 
-            {
-                Thread.sleep(sleepInterval);
-                command.execute();
-            } 
-            catch (Exception e) 
-            {
-            }
+                {
+                    Thread.sleep(sleepInterval);
+                    command.execute();
+                } 
+                catch (InterruptedException e) 
+                {
+                    Thread.currentThread().interrupt();
+                }
         }
 
-    }
-
-    public void stopTimer()
-    {
-        continueRunning = false;
     }
 }

@@ -1,5 +1,6 @@
 package dat18c.airport_app;
 
+<<<<<<< HEAD
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,11 +13,23 @@ import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 import dat18c.airport_app.repositories.ArrivalRepository;
 import dat18c.airport_app.repositories.DepartureRepository;
 import dat18c.airport_app.services.StandpladsService;
+=======
+import dat18c.airport_app.userconfig.UserConfig;
+import dat18c.airport_app.utils.Timer;
+import dat18c.airport_app.utils.interfaces.ICommand;
+>>>>>>> ef343ad9fdf4fc14aacd9c0ccfbe3aef1a753044
 
 /**
  * Hello world!
  */
+public class Program 
+{
+    public static void main(String[] args) 
+    {
+        UserConfig.StartConfiguration();
+        System.out.println(UserConfig.getUserName());
 
+<<<<<<< HEAD
 public class Program {
     public static void main(String[] args) throws SQLException {
         DatabaseConnection dbConnection = DatabaseConnection.getInstance();
@@ -62,9 +75,14 @@ public class Program {
 
         ICommand command = new ICommand() {
 
+=======
+        ICommand command = new ICommand(){
+        
+>>>>>>> ef343ad9fdf4fc14aacd9c0ccfbe3aef1a753044
             @Override
-            public void execute() {
-                System.out.println("hello!");
+            public void execute() 
+            {
+                System.out.println("Hello, World!");
             }
         };
 
@@ -73,102 +91,12 @@ public class Program {
 
         try 
         {
-            Thread.sleep(4000);
+            Thread.sleep(3000);
+            timer.interrupt();    
         } 
-        catch (InterruptedException e) 
+        catch (Exception e) 
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        timer.stopTimer();
-
-        /*
-
-        while (true) 
-        {
-
-            System.out.println("Want to see airplane parking spots?");
-            System.console().readLine();
-            
-            try 
-            {
-                DatabaseConnection dbConnection = DatabaseConnection.getInstance();
-                dbConnection.connect();
-                
-                AirplaneParkingSpotRepository repo = new AirplaneParkingSpotRepository(dbConnection);
-                List<AirplaneParkingSpot> parkingSpots = repo.fetchAll();
-                
-                for (AirplaneParkingSpot a : parkingSpots) 
-                {
-                    System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
-                    + ", Size:\t" + a.getSize().toString());    
-                }
-                
-            } 
-            catch (Exception e) 
-            {
-            }
-            
-            System.out.println("Are you finished looking?");
-            System.console().readLine();
-            
-            try 
-            {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } 
-            catch (Exception e) 
-            {
-
-            }
-            
-        }
-<<<<<<< HEAD
-
-/**
-=======
-*/
-            //Display Menu
-/*
-
-        Scanner sc = new Scanner(System.in);
-
-        //Getting user input
-
-
-        printMenu();
-    }
-
-    }
-
-    private static void printMenu()
-    {
-        System.out.println("1\t Flight information");
-        System.out.println("2\t Arrivals and Depatures");
-        System.out.println("3\t Airplane Service");
-        System.out.println("4\t Apron");
-        System.out.println("5\t Show Airline ");
-        System.out.println("Please enter your choice");
-    }
-
-    private static int getInt()
->>>>>>> f5a96148a6f4e20d5755f2f8fff9635e6c44d963
-    {
-        while (true) 
-        {
-            try 
-            {
-                return Integer.parseInt(System.console().readLine());    
-            } 
-            catch (NumberFormatException e) 
-            {
-                
-            }
+            //TODO: handle exception
         }
     }
- */
-
-        }
-
-
-    }
+}
