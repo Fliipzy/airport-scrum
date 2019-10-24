@@ -2,6 +2,10 @@ package dat18c.airport_app.models;
 
 import java.util.Date;
 
+/**
+ * Departure class
+ */
+
 public class Departure 
 {
     private Airplane airplane;
@@ -10,6 +14,7 @@ public class Departure
 
     public Departure() {}
 
+    //Constructor holds 3 values
     public Departure(Airplane airplane, String toCountry, Date departureDate) 
     {
         this.airplane = airplane;
@@ -17,6 +22,7 @@ public class Departure
         this.departureDate = departureDate;
     }   
 
+    //Getters. Setters are not used so that the values stay consistent.
     public Airplane getAirplane() 
     {
         return airplane;
@@ -30,5 +36,11 @@ public class Departure
     public Date getDepartureDate() 
     {
         return departureDate;
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("[Departure (airplane: %s)]", airplane.getName());
     }
 }

@@ -15,11 +15,12 @@ public class AirplaneParkingSpot
         this.number = number;
     }
 
-    public AirplaneParkingSpot(Size size, int number, Airplane airplane)
+    public AirplaneParkingSpot(Size size, int number, Airplane airplane, boolean isOccupied)
     {
         this.size = size;
         this.number = number;
         this.airplane = airplane;
+        this.isOccupied = isOccupied;
     }
 
     public Size getSize() 

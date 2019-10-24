@@ -35,12 +35,5 @@ public class Program
         {
             //TODO: handle exception
         }
-
-
-    }
-
-    private static void promptMenu()
-    {
-        
     }
 }
