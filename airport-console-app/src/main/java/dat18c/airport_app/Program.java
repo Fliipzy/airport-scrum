@@ -55,16 +55,18 @@ public class Program
                     System.out.println("----");
             }
         }
->>>>>>> 643991218b2e023b6560eb0667e5877d566abab9
 
         //Display Menu
 
 
         Scanner sc = new Scanner(System.in);
-=======
+
         //Getting user input
         */
+
+        printMenu();
     }
+
 
     private static void printMenu()
     {
@@ -72,7 +74,7 @@ public class Program
         System.out.println("2\t Arrivals and Depatures");
         System.out.println("3\t Airplane Service");
         System.out.println("4\t Apron");
-        System.out.println("5\t ");
+        System.out.println("5\t Show Airline ");
         System.out.println("Please enter your choice");
     }
 
