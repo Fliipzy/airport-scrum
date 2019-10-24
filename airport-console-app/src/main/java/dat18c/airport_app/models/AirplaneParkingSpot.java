@@ -43,7 +43,8 @@ public class AirplaneParkingSpot
 
     public boolean isOccupied() 
     {
-        return (airplane == null) ? false : true;
+//        return (airplane == null) ? false : true;
+        return isOccupied;
     }
 
     @Override
