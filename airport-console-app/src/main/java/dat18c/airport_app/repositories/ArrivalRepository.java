@@ -15,17 +15,19 @@ import dat18c.airport_app.models.enums.Size;
 import dat18c.airport_app.repositories.interfaces.ICrud;
 
 /**
- * ArrivalRepository
+ * ArrivalRepository used to fetch data regarding the arrival of a plane.
  */
 public class ArrivalRepository implements ICrud<Arrival> 
 {
     private Connection connection;
 
+    //Establishes DB connection
     public ArrivalRepository(IDatabaseConnection databaseConnection) 
     {
         this.connection = databaseConnection.getConnection();
     }
 
+    //Method that retrieves a list of plane name, to country, departure time, airline and size.
     @Override
     public List<Arrival> fetchAll() throws SQLException 
     {
@@ -35,14 +37,15 @@ public class ArrivalRepository implements ICrud<Arrival>
         " fly.flyselskab_navn, fly.størrelse FROM lufthavn.afgang " + 
         " INNER JOIN lufthavn.fly ON fly_navn = lufthavn.fly.navn";
 
+        //Accepts and executes SQL queries
         var statement = connection.createStatement();
         var resultSet = statement.executeQuery(sql);
 
+        //Runs as long as there is something to read in the resultset
         while (resultSet.next()) 
         {
             arrivals.add(mapToArrival(resultSet));
         }
-
         statement.close();
         resultSet.close();
         return arrivals;
@@ -76,6 +79,7 @@ public class ArrivalRepository implements ICrud<Arrival>
 
     }
 
+    //Gives "Arrival" the values of name, to coutnry, timestamp, airline name and size.
     private Arrival mapToArrival(ResultSet resultSet) throws SQLException
     {
         String airplaneName = resultSet.getString("fly_navn");
