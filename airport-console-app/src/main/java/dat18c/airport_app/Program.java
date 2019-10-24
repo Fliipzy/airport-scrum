@@ -6,11 +6,17 @@ import java.util.List;
 import dat18c.airport_app.db.DatabaseConnection;
 import dat18c.airport_app.models.AirplaneParkingSpot;
 import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
+<<<<<<< HEAD
 import dat18c.airport_app.services.StandpladsService;
+=======
+import dat18c.airport_app.utils.Timer;
+import dat18c.airport_app.utils.interfaces.ICommand;
+>>>>>>> b78082cf4784851cf18a8a27de6430fe73dc032a
 
 /**
  * Hello world!
  */
+<<<<<<< HEAD
 public class Program 
 {
     public static void main(String[] args) throws SQLException {
@@ -22,9 +28,38 @@ public class Program
 
 
 /*
+=======
+public class Program {
+    public static void main(String[] args) {
+
+        ICommand command = new ICommand() {
+
+            @Override
+            public void execute() {
+                System.out.println("hello!");
+            }
+        };
+
+        Timer timer = new Timer(1000, command, true);
+        timer.start();
+
+        try 
+        {
+            Thread.sleep(4000);
+        } 
+        catch (InterruptedException e) 
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        timer.stopTimer();
+
+        /*
+>>>>>>> b78082cf4784851cf18a8a27de6430fe73dc032a
         while (true) 
         {
-            
+
             System.out.println("Want to see airplane parking spots?");
             System.console().readLine();
             
@@ -56,6 +91,7 @@ public class Program
             } 
             catch (Exception e) 
             {
+<<<<<<< HEAD
             }
             
         }
@@ -98,5 +134,10 @@ public class Program
         }
     }
  */
+=======
+            }*/
+   
+        
+>>>>>>> b78082cf4784851cf18a8a27de6430fe73dc032a
     }
 }
