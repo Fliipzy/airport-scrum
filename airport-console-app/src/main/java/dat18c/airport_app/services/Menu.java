@@ -8,6 +8,7 @@ import dat18c.airport_app.models.Departure;
 import dat18c.airport_app.repositories.*;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,124 +37,139 @@ public class Menu {
         System.out.println("2\t Airlines");
         System.out.println("3\t Departures");
         System.out.println("4\t Show Parking spot");
-        System.out.println("5\t --------- ");
+        System.out.println("5\t Arrival ");
+        System.out.println("9\t Exit Program ");
         System.out.println("Please enter your choice");
 
 
         Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        int valg = sc.nextInt();
+        int valg;
 
-        switch (sc.nextInt()) {
-            case 1:
-                System.out.println("Service for airplanes");
+        try {
+            switch (sc.nextInt()) {
+                case 1:
+                    System.out.println("Service for airplanes");
+                    valg = sc.nextInt();
+                    if (valg == 1) {
+                        System.out.println("Add Flight information ");
+                        airportServiceCompanyRepository.insert();
 
+                    }
+                    if (valg == 2) {
 
+                        System.out.println("Delete service");
+
+                        airportServiceCompanyRepository.deleteServiceSelskab();
+
+                        if (valg == 3) {
+
+                            System.out.println("Update service");
+                            airportServiceCompanyRepository.updateServiceTable();
+                        }
+
+                        if (valg == 4){
+                            System.out.println("Show all service");
+                            airportServiceCompanyRepository.fetchAll();
+                        }
+
+                    }
+
+                case 2:
+                    System.out.println("Airline's");
+                        valg = sc.nextInt();
                 if (valg == 1) {
-                    System.out.println("Add Flight information ");
-                    airportServiceCompanyRepository.insert();
+                        System.out.println("insert a new Airline");
+                        airlineRepository.create();
 
-
-                }
-                if (valg == 2) {
-
-                    System.out.println("Delete service");
-
-                    airportServiceCompanyRepository.deleteServiceSelskab();
-
+                    }
+                    if (valg == 2) {
+                        System.out.println("Update Airlines");
+                        airlineRepository.updateAirlineTable();
+                    }
                     if (valg == 3) {
-
-                        System.out.println("Update service");
-                        airportServiceCompanyRepository.updateServiceTable();
+                        System.out.println("Delte Airline");
+                        airlineRepository.updateAirlineTable();
                     }
 
-                    if (valg == 4) ;
-                    {
-                        System.out.println("Show all service");
-                        airportServiceCompanyRepository.fetchAll();
+
+                case 3:
+                    System.out.println("Departues");
+                    System.out.println("Type 1: Show all departures");
+                    valg = sc.nextInt();
+                    if (valg == 1) {
+
+                        //departureRepository.fetchAll();
+
+
+                        List<Departure> departureRepositories = departureRepository.fetchAll();
+
+                        for (Departure d : departureRepositories) {
+                            System.out.println("Airplane\t" + d.toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
+
+                        }
                     }
 
-                }
+                case 4:
+                    System.out.println("Show airport parking spot");
+                    valg = sc.nextInt();
+                {
+                    if (valg == 1) {
 
-            case 2:
-                System.out.println("Airline's");
+                        List<AirplaneParkingSpot> parkingSpots = airplaneParkingSpotRepository.fetchAll();
 
-                if (valg == 1) {
-                    System.out.println("insert a new Airline");
-                    airlineRepository.create();
+                        for (AirplaneParkingSpot a : parkingSpots) {
+                            System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
+                                    + ", Size:\t" + a.getSize().toString());
 
-                }
-                if (valg == 2) {
-                    System.out.println("Update Airlines");
-                    airlineRepository.updateAirlineTable();
-                }
-                if (valg == 3) {
-                    System.out.println("Delte Airline");
-                    airlineRepository.updateAirlineTable();
-                }
+                        }
+                        if (valg == 2) {
 
+                            System.out.println("Move plane");
 
-            case 3:
-                System.out.println("Departues");
-                if (valg == 1) {
-                    System.out.println("Show all departures");
-                    //departureRepository.fetchAll();
-
-
-                    List<Departure> departureRepositories = departureRepository.fetchAll();
-
-                    for (Departure d: departureRepositories) {
-                        System.out.println("Airplane\t" + d.toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
+                            StandpladsService standpladsService = new StandpladsService(dbConnection);
+                            standpladsService.movePlane();
+                        }
 
                     }
                 }
 
-            case 4:
-                System.out.println("Show airport parking spot");
-            {
-                if (valg == 1) {
+                case 5:
+                    System.out.println("Arrival");
+                    System.out.println("Type 1 too see alt the Arriavls");
+                    valg = sc.nextInt();
 
-                    List<AirplaneParkingSpot> parkingSpots = airplaneParkingSpotRepository.fetchAll();
+                    if (valg == 1) {
 
-                    for (AirplaneParkingSpot a : parkingSpots) {
-                        System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
-                                + ", Size:\t" + a.getSize().toString());
+                        List<Arrival> arrivalList = arrivalrepository.fetchAll();
 
-                    }if (valg == 2) {
+                        for (Arrival a : arrivalList) {
 
-                        System.out.println("Move plane");
-
-                        StandpladsService standpladsService = new StandpladsService(dbConnection);
-                        standpladsService.movePlane();
+                            System.out.println("Airplane:\t" + a.toString() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate());
+                        }
+                        break;
                     }
+                case 6:
+                    System.out.println("Airplane");
+                    valg = sc.nextInt();
 
-                }
+                    if (valg == 1) {
+                        List<Airplane> airplanes = airplaneRepository.fetchAll();
+
+                        for (Airplane a : airplanes) {
+                            System.out.println("Size:\t" + a.getSize() + " Name:\t " + a.getName());
+                        }
+                    }
+                case 9:
+                    System.out.println("EXIT");
+                    System.exit(0);
+                default:
+                    System.out.println("Forket input!");
+                    printMenu();
             }
-
-            case 5:
-                System.out.println("Arrival");
-
-                if (valg ==1){
-                   List<Arrival> arrivalList = arrivalrepository.fetchAll();
-
-                   for (Arrival a : arrivalList){
-
-                       System.out.println("Airplane:\t" + a.toString() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate());
-
-                   }
-                }
-            case 6:
-                System.out.println("Airplane");
-
-
-                if (valg == 1){
-                    List<Airplane> airplanes = airplaneRepository.fetchAll();
-
-                    for (Airplane a: airplanes){
-                        System.out.println("Size:\t" + a.getSize() + " Name:\t " + a.getName());
-                    }
-                }
-
+        } catch (InputMismatchException e) {
+           // e.printStackTrace();
+            System.out.println("Input skal være et int. Prøv igen: \n");
+            printMenu();
         }
 
     }
