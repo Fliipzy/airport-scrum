@@ -41,18 +41,15 @@ public class Menu {
 
 
         Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        int valg = sc.nextInt();
+        int valg;
 
         switch (sc.nextInt()) {
             case 1:
                 System.out.println("Service for airplanes");
-
-
+                valg = sc.nextInt();
                 if (valg == 1) {
                     System.out.println("Add Flight information ");
                     airportServiceCompanyRepository.insert();
-
 
                 }
                 if (valg == 2) {
@@ -67,8 +64,7 @@ public class Menu {
                         airportServiceCompanyRepository.updateServiceTable();
                     }
 
-                    if (valg == 4) ;
-                    {
+                    if (valg == 4){
                         System.out.println("Show all service");
                         airportServiceCompanyRepository.fetchAll();
                     }
@@ -77,8 +73,8 @@ public class Menu {
 
             case 2:
                 System.out.println("Airline's");
-
-                if (valg == 1) {
+                    valg = sc.nextInt();
+            if (valg == 1) {
                     System.out.println("insert a new Airline");
                     airlineRepository.create();
 
@@ -95,14 +91,16 @@ public class Menu {
 
             case 3:
                 System.out.println("Departues");
+                System.out.println("Type 1: Show all departures");
+                valg = sc.nextInt();
                 if (valg == 1) {
-                    System.out.println("Show all departures");
+
                     //departureRepository.fetchAll();
 
 
                     List<Departure> departureRepositories = departureRepository.fetchAll();
 
-                    for (Departure d: departureRepositories) {
+                    for (Departure d : departureRepositories) {
                         System.out.println("Airplane\t" + d.toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
 
                     }
@@ -110,6 +108,7 @@ public class Menu {
 
             case 4:
                 System.out.println("Show airport parking spot");
+                valg = sc.nextInt();
             {
                 if (valg == 1) {
 
@@ -119,7 +118,8 @@ public class Menu {
                         System.out.println("Number:\t" + a.getNumber() + ", IsOccupied:\t" + a.isOccupied()
                                 + ", Size:\t" + a.getSize().toString());
 
-                    }if (valg == 2) {
+                    }
+                    if (valg == 2) {
 
                         System.out.println("Move plane");
 
@@ -133,23 +133,26 @@ public class Menu {
             case 5:
                 System.out.println("Arrival");
 
-                if (valg ==1){
-                   List<Arrival> arrivalList = arrivalrepository.fetchAll();
+                valg = sc.nextInt();
 
-                   for (Arrival a : arrivalList){
+                if (valg == 1) {
 
-                       System.out.println("Airplane:\t" + a.toString() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate());
+                    List<Arrival> arrivalList = arrivalrepository.fetchAll();
 
-                   }
+                    for (Arrival a : arrivalList) {
+
+                        System.out.println("Airplane:\t" + a.toString() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate());
+
+                    }
                 }
             case 6:
                 System.out.println("Airplane");
+                valg = sc.nextInt();
 
-
-                if (valg == 1){
+                if (valg == 1) {
                     List<Airplane> airplanes = airplaneRepository.fetchAll();
 
-                    for (Airplane a: airplanes){
+                    for (Airplane a : airplanes) {
                         System.out.println("Size:\t" + a.getSize() + " Name:\t " + a.getName());
                     }
                 }

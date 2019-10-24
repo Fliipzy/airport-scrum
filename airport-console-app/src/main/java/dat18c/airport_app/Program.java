@@ -14,6 +14,7 @@ import dat18c.airport_app.repositories.AirplaneParkingSpotRepository;
 import dat18c.airport_app.repositories.AirplaneRepository;
 import dat18c.airport_app.repositories.ArrivalRepository;
 import dat18c.airport_app.repositories.DepartureRepository;
+import dat18c.airport_app.services.Menu;
 import dat18c.airport_app.services.StandpladsService;
 
 import dat18c.airport_app.userconfig.UserConfig;
@@ -32,6 +33,10 @@ public class Program {
 
         DatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();
+
+        Menu menu = new Menu();
+
+        menu.printMenu();
 
 }
 
