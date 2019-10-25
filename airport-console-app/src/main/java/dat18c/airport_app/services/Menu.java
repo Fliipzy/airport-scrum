@@ -53,6 +53,10 @@ public class Menu
             {
                 case 1:
                     System.out.println("Service for airplanes");
+                    System.out.println("Type 1: Add Flight information");
+                    System.out.println("Type 2: Delete service");
+                    System.out.println("Type 3: Update Service");
+                    System.out.println("Type 4: Show all Service's");
                     valg = sc.nextInt();
                     if (valg == 1) 
                     {
@@ -85,7 +89,10 @@ public class Menu
                     break;
 
                 case 2:
-                    System.out.println("Airline's");
+                    System.out.println("Type 1: Insert a new Airline");
+                    System.out.println("Type 2: Update Airlines");
+                    System.out.println("Type 3: Delete Airline");
+
                         valg = sc.nextInt();
                     if (valg == 1) 
                     {
@@ -100,14 +107,14 @@ public class Menu
                     }
                     if (valg == 3) 
                     {
-                        System.out.println("Delte Airline");
-                        airlineRepository.updateAirlineTable();
+                        System.out.println("Delete Airline");
+                        airlineRepository.deleteairLineInfo();
                     }
                     break;
 
                 case 3:
 
-                    System.out.println("Departues");
+                    System.out.println("Departures");
                     System.out.println("Type 1: Show all departures");
                     valg = sc.nextInt();
                     if (valg == 1) 
@@ -124,6 +131,8 @@ public class Menu
 
                 case 4:
                     System.out.println("Show airport parking spot");
+                    System.out.println("Type 1: Show parking spot");
+                    System.out.println("Type 2: Move plane to a new parking spot");
                     valg = sc.nextInt();
 
                     if (valg == 1) 
@@ -148,7 +157,7 @@ public class Menu
 
                 case 5:
                     System.out.println("Arrival");
-                    System.out.println("Type 1 too see alt the Arriavls");
+                    System.out.println("Type 1 too see all the Arriavls");
                     valg = sc.nextInt();
 
                     if (valg == 1) 
@@ -162,7 +171,7 @@ public class Menu
                         break;
                     }
                 case 6:
-                    System.out.println("Airplane");
+                    System.out.println("Type 1: Show all Airplane's");
                     valg = sc.nextInt();
 
                     if (valg == 1) 
@@ -171,7 +180,7 @@ public class Menu
 
                         for (Airplane a : airplanes) 
                         {
-                            System.out.println( "Name:\t " + a.getName() + "\tSize:\t" + a.getSize());
+                            System.out.println( "Name:\t" + a.getName() + "\tSize: " + a.getSize());
                         }
                     }
                     break;
@@ -182,6 +191,7 @@ public class Menu
                     System.out.println("Forket input!");
                     printMenu();
             }
+            printMenu();
         } 
         catch (InputMismatchException e) 
         {
