@@ -16,7 +16,7 @@ import dat18c.airport_app.models.enums.Size;
 import dat18c.airport_app.repositories.interfaces.ICrud;
 
 /** DepartureRepository */
-public class DepartureRepository implements ICrud<Departure> 
+public class DepartureRepository implements ICrud<Departure, Integer> 
 {
     private Connection connection;
 
@@ -38,7 +38,7 @@ public class DepartureRepository implements ICrud<Departure>
                 " INNER JOIN lufthavn.fly ON fly_navn = lufthavn.fly.navn";
 
         //Tager imod query statement
-        Statement statement = connection.createStatement();
+        var statement = connection.createStatement();
         //Udfører query
         var rSet = statement.executeQuery(query);
 
@@ -53,7 +53,7 @@ public class DepartureRepository implements ICrud<Departure>
     }
 
     @Override
-    public Departure findById(int id) throws SQLException 
+    public Departure findById(Integer id) throws SQLException 
     {
         return null;
     }
@@ -69,21 +69,20 @@ public class DepartureRepository implements ICrud<Departure>
     }
 
     @Override
-    public void deleteById(int id) throws SQLException 
+    public void deleteById(Integer id) throws SQLException 
     {
     }
 
     private Departure mapToDeparture(ResultSet rSet) throws SQLException 
     {
         String airplaneName = rSet.getString("fly_navn");
-        String toCountry    = rSet.getString("fra_land");
-        Date departureTime  = rSet.getDate("ankomst_tidspunkt");
+        String toCountry = rSet.getString("fra_land");
+        Date departureTime = rSet.getDate("ankomst_tidspunkt");
         String airlineCompanyName = rSet.getString("flyselskab_navn");
-        //Enum
         Size airplaneSize = Size.fromInt((rSet.getInt("størrelse")));
 
-        Airplane airplane = new Airplane(airplaneName, airplaneSize, new Airline(airlineCompanyName));
-        Departure departure = new Departure(airplane, toCountry, departureTime);
+        var airplane = new Airplane(airplaneName, airplaneSize, new Airline(airlineCompanyName));
+        var departure = new Departure(airplane, toCountry, departureTime);
 
         return departure;
     }

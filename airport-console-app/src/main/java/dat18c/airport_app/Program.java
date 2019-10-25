@@ -23,7 +23,7 @@ public class Program
         dbConnection.connect();
 
         Menu menu = new Menu();
-
+        
         menu.printMenu();
     }
 }

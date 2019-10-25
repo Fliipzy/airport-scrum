@@ -12,7 +12,7 @@ import dat18c.airport_app.db.interfaces.IDatabaseConnection;
 import dat18c.airport_app.models.Airline;
 import dat18c.airport_app.repositories.interfaces.ICrud;
 
-public class AirlineRepository implements ICrud<Airline> 
+public class AirlineRepository implements ICrud<Airline, String> 
 {
     private Connection connection;
     static Scanner input;
@@ -53,13 +53,13 @@ public class AirlineRepository implements ICrud<Airline>
     }
 
     @Override
-    public Airline findById(int id) throws SQLException 
+    public Airline findById(String id) throws SQLException 
     {
         return null;
     }
 
     @Override
-    public void deleteById(int id) throws SQLException 
+    public void deleteById(String id) throws SQLException 
     {
 
     }

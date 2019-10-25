@@ -17,7 +17,7 @@ import dat18c.airport_app.repositories.interfaces.ICrud;
 /**
  * ArrivalRepository used to fetch data regarding the arrival of a plane.
  */
-public class ArrivalRepository implements ICrud<Arrival> 
+public class ArrivalRepository implements ICrud<Arrival, Integer> 
 {
     private Connection connection;
 
@@ -52,7 +52,7 @@ public class ArrivalRepository implements ICrud<Arrival>
     }
 
     @Override
-    public Arrival findById(int id) throws SQLException 
+    public Arrival findById(Integer id) throws SQLException 
     {
         // TODO Auto-generated method stub
         return null;
@@ -73,7 +73,7 @@ public class ArrivalRepository implements ICrud<Arrival>
     }
 
     @Override
-    public void deleteById(int id) throws SQLException 
+    public void deleteById(Integer id) throws SQLException 
     {
         // TODO Auto-generated method stub
 
