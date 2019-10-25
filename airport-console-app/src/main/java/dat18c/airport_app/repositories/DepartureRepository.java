@@ -1,9 +1,6 @@
 package dat18c.airport_app.repositories;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -77,12 +74,13 @@ public class DepartureRepository implements ICrud<Departure, Integer>
     {
         String airplaneName = rSet.getString("fly_navn");
         String toCountry = rSet.getString("fra_land");
-        Date departureTime = rSet.getDate("ankomst_tidspunkt");
+        Date departureDate = rSet.getDate("ankomst_tidspunkt");
+        Time departureTime = rSet.getTime("ankomst_tidspunkt");;
         String airlineCompanyName = rSet.getString("flyselskab_navn");
         Size airplaneSize = Size.fromInt((rSet.getInt("størrelse")));
 
         var airplane = new Airplane(airplaneName, airplaneSize, new Airline(airlineCompanyName));
-        var departure = new Departure(airplane, toCountry, departureTime);
+        var departure = new Departure(airplane, toCountry, departureDate, departureTime);
 
         return departure;
     }

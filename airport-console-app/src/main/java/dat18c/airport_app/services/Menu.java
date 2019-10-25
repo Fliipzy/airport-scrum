@@ -124,7 +124,7 @@ public class Menu
 
                         for (Departure d : departureRepositories) 
                         {
-                            System.out.println("Airplane\t" + d.toString() + ", To Country\t" + d.toCountry() + ",Departure Date\t" + d.getDepartureDate());
+                            System.out.println("Airplane\t" + d.toString() + ", To Country\t" + d.toCountry() + ", Departure time\t" + d.getDepartureDate() + "  " +  d.getDepartureTime());
 
                         }
                     }
@@ -166,7 +166,7 @@ public class Menu
 
                         for (Arrival a : arrivalList) 
                         {
-                            System.out.println("Airplane:\t" + a.toString() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate());
+                            System.out.println("Airplane:\t" + a.toString() + "From Country:\t" + a.getFromCountry() + "Arrival Date\t" + a.getArrivalDate() + " " + a.getArrivalTime());
                         }
                         break;
                     }

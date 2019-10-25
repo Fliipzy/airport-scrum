@@ -1,5 +1,6 @@
 package dat18c.airport_app.models;
 
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -10,15 +11,17 @@ public class Arrival
 {
     private Airplane airplane;
     private String fromCountry;
-    private Date arrivalTime;
+    private Date arrivalDate;
+    private Time arrivalTime;
 
     public Arrival() {}
 
-    public Arrival(Airplane airplane, String fromCountry, Date arrivalDate) 
+    public Arrival(Airplane airplane, String fromCountry, Date arrivalDate, Time arrivalTime)
     {
         this.airplane = airplane;
         this.fromCountry = fromCountry;
-        this.arrivalTime = arrivalDate;
+        this.arrivalDate = arrivalDate;
+        this.arrivalTime = arrivalTime;
     }
 
     public Airplane getAirplane() 
@@ -32,6 +35,11 @@ public class Arrival
     }
 
     public Date getArrivalDate() 
+    {
+        return arrivalDate;
+    }
+
+    public Time getArrivalTime()
     {
         return arrivalTime;
     }
