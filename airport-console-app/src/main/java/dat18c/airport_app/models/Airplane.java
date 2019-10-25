@@ -12,6 +12,10 @@ public class Airplane
     private Size size;
     private Airline airline;
 
+    public Airplane() {
+        super();
+    }
+
     public Airplane(String name, Size size, Airline airline) 
     {
         this.name = name;

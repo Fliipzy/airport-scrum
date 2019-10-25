@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dat18c.airport_app.db.interfaces.IDatabaseConnection;
+import dat18c.airport_app.models.Airplane;
 import dat18c.airport_app.models.AirplaneParkingSpot;
 import dat18c.airport_app.models.enums.Size;
 import dat18c.airport_app.repositories.interfaces.ICrud;
@@ -75,6 +76,6 @@ public class AirplaneParkingSpotRepository implements ICrud<AirplaneParkingSpot>
         Size size = Size.fromInt(resultSet.getInt("størrelse"));
         boolean available = resultSet.getBoolean("available");
 
-        return new AirplaneParkingSpot(size, number, null);
+        return new AirplaneParkingSpot(size, number, (available) ? new Airplane() : null);
     }
 }

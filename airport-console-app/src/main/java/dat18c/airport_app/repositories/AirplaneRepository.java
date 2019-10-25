@@ -49,8 +49,12 @@ public class AirplaneRepository implements ICrud<Airplane>
     @Override
     public void update(Airplane t) throws SQLException
     {
-        // TODO Auto-generated method stub
+        var preparedStatement = connection.prepareStatement("UPDATE fly SET flyselskab_navn=?, størrelse=? WHERE navn=?");
+        preparedStatement.setString(3, t.getName());
+        preparedStatement.setString(1, t.getAirline().getName());
+        preparedStatement.setInt(2, t.getSize().ordinal()+1);
 
+        int u = preparedStatement.executeUpdate();
     }
 
     @Override

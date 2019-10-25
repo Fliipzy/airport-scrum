@@ -3,7 +3,7 @@ package dat18c.airport_app.utils;
 import dat18c.airport_app.models.AirplaneParkingSpot;
 import dat18c.airport_app.models.enums.Size;
 
-public class AirportServiceTimer
+public class AirportServiceHandler
 {
     public boolean preparingAirplane(AirplaneParkingSpot parkingSpot)
     {
