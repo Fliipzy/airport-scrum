@@ -43,7 +43,7 @@ public class AirportServiceHandler
     {
         System.out.println("Adding fuel to the airplane!");
         Timer fuel = new Timer(fuelTime, new FuelCommand(), false);
-        fuel.start();
+        fuel.start(); 
 
         System.out.println("Cleaning the airplane!");
         Timer cleaning = new Timer(cleanTime, new CleaningCommand(), false);
