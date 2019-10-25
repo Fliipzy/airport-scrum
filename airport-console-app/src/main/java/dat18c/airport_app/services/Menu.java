@@ -186,7 +186,7 @@ public class Menu
         catch (InputMismatchException e) 
         {
            // e.printStackTrace();
-            System.out.println("Input skal være et int. Prøv igen: \n");
+            System.out.println("Input skal være et nummer. Prøv igen: \n");
             printMenu();
         }
 
