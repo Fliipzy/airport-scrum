@@ -15,7 +15,7 @@ import dat18c.airport_app.repositories.interfaces.ICrud;
 /**
  * AirplaneParkingSpotRepository
  */
-public class AirplaneParkingSpotRepository implements ICrud<AirplaneParkingSpot> 
+public class AirplaneParkingSpotRepository implements ICrud<AirplaneParkingSpot, Integer> 
 {
     private Connection connection;
 
@@ -43,7 +43,7 @@ public class AirplaneParkingSpotRepository implements ICrud<AirplaneParkingSpot>
     }
 
     @Override
-    public AirplaneParkingSpot findById(int id) throws SQLException 
+    public AirplaneParkingSpot findById(Integer id) throws SQLException 
     {
         // TODO Auto-generated method stub
         return null;
@@ -64,7 +64,7 @@ public class AirplaneParkingSpotRepository implements ICrud<AirplaneParkingSpot>
     }
 
     @Override
-    public void deleteById(int id) throws SQLException 
+    public void deleteById(Integer id) throws SQLException 
     {
         // TODO Auto-generated method stub
 

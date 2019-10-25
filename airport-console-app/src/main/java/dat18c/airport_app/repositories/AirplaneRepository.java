@@ -12,7 +12,7 @@ import dat18c.airport_app.models.Airplane;
 import dat18c.airport_app.models.enums.Size;
 import dat18c.airport_app.repositories.interfaces.ICrud;
 
-public class AirplaneRepository implements ICrud<Airplane>
+public class AirplaneRepository implements ICrud<Airplane, String>
 {
     private Connection connection;
 
@@ -40,9 +40,8 @@ public class AirplaneRepository implements ICrud<Airplane>
     }
 
     @Override
-    public Airplane findById(int id) throws SQLException
+    public Airplane findById(String id) throws SQLException
     {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -54,7 +53,7 @@ public class AirplaneRepository implements ICrud<Airplane>
         preparedStatement.setString(1, t.getAirline().getName());
         preparedStatement.setInt(2, t.getSize().ordinal()+1);
 
-        int u = preparedStatement.executeUpdate();
+        preparedStatement.executeUpdate();
     }
 
     @Override
@@ -71,7 +70,7 @@ public class AirplaneRepository implements ICrud<Airplane>
     }
 
     @Override
-    public void deleteById(int id) throws SQLException
+    public void deleteById(String id) throws SQLException
     {
         // TODO Auto-generated method stub
     }

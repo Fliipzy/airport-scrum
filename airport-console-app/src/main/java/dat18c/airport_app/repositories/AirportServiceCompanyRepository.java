@@ -11,7 +11,7 @@ import dat18c.airport_app.models.enums.Size;
 import dat18c.airport_app.repositories.interfaces.ICrud;
 
 
-public class AirportServiceCompanyRepository implements ICrud<AirportServiceCompany> 
+public class AirportServiceCompanyRepository implements ICrud<AirportServiceCompany, Integer> 
 {
     private Connection connection;
     static Scanner input;
@@ -39,7 +39,7 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
     }
 
     @Override
-    public AirportServiceCompany findById(int id) throws SQLException
+    public AirportServiceCompany findById(Integer id) throws SQLException
     {
         return null;
     }
@@ -57,8 +57,9 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
     }
 
     @Override
-    public void deleteById(int id) throws SQLException 
+    public void deleteById(Integer id) throws SQLException 
     {
+        
     }
 
     public void deleteServiceSelskab() throws SQLException 

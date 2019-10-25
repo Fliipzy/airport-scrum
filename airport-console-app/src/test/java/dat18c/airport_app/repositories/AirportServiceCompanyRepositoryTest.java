@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany> 
+class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany, Integer> 
 {
     private Connection connection;
     static Scanner input;
@@ -35,7 +35,8 @@ class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany
 
 
     @Test
-    void findById() throws SQLException {
+    void findById() throws SQLException 
+    {
 
         System.out.println("Test");
         IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
@@ -48,7 +49,8 @@ class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany
     }
 
     @Test
-    void update() throws SQLException {
+    void update() throws SQLException 
+    {
         IDatabaseConnection dbConnection = DatabaseConnection.getInstance();
         dbConnection.connect();
 
@@ -66,8 +68,9 @@ class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany
         assertEquals(sql, "10");
     }
 
-        @Test
-    void create() {
+    @Test
+    void create() 
+    {
     }
 
     @Test
@@ -106,27 +109,32 @@ class AirportServiceCompanyRepositoryTest implements ICrud<AirportServiceCompany
 
     @Test
     @Override
-    public List<AirportServiceCompany> fetchAll() throws SQLException {
+    public List<AirportServiceCompany> fetchAll() throws SQLException 
+    {
         return null;
     }
 
     @Override
-    public AirportServiceCompany findById(int id) throws SQLException {
+    public AirportServiceCompany findById(Integer id) throws SQLException 
+    {
         return null;
     }
 
     @Override
-    public void update(AirportServiceCompany airportServiceCompany) throws SQLException {
+    public void update(AirportServiceCompany airportServiceCompany) throws SQLException 
+    {
 
     }
 
     @Override
-    public void create(AirportServiceCompany airportServiceCompany) throws SQLException {
+    public void create(AirportServiceCompany airportServiceCompany) throws SQLException 
+    {
 
     }
 
     @Override
-    public void deleteById(int id) throws SQLException {
+    public void deleteById(Integer id) throws SQLException 
+    {
 
     }
 }
