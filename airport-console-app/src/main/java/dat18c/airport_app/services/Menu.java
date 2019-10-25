@@ -1,10 +1,7 @@
 package dat18c.airport_app.services;
 
 import dat18c.airport_app.db.DatabaseConnection;
-import dat18c.airport_app.models.Airplane;
-import dat18c.airport_app.models.AirplaneParkingSpot;
-import dat18c.airport_app.models.Arrival;
-import dat18c.airport_app.models.Departure;
+import dat18c.airport_app.models.*;
 import dat18c.airport_app.repositories.*;
 
 import java.sql.SQLException;
@@ -92,6 +89,7 @@ public class Menu
                     System.out.println("Type 1: Insert a new Airline");
                     System.out.println("Type 2: Update Airlines");
                     System.out.println("Type 3: Delete Airline");
+                    System.out.println("Type 4: Show all Airline");
 
                         valg = sc.nextInt();
                     if (valg == 1) 
@@ -109,6 +107,15 @@ public class Menu
                     {
                         System.out.println("Delete Airline");
                         airlineRepository.deleteairLineInfo();
+                    }
+                    if (valg == 4)
+                    {
+                        List<Airline> airlines = airlineRepository.fetchAll();
+
+                        for (Airline a: airlines){
+
+                            System.out.println("Airline\t" + a.getName());
+                        }
                     }
                     break;
 
