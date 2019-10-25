@@ -108,7 +108,7 @@ public class Menu
                     if (valg == 3) 
                     {
                         System.out.println("Delete Airline");
-                        airlineRepository.updateAirlineTable();
+                        airlineRepository.deleteairLineInfo();
                     }
                     break;
 
@@ -191,6 +191,7 @@ public class Menu
                     System.out.println("Forket input!");
                     printMenu();
             }
+            printMenu();
         } 
         catch (InputMismatchException e) 
         {
