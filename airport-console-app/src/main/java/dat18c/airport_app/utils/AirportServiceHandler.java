@@ -18,21 +18,21 @@ public class AirportServiceHandler
             {
                 if (parkingSpot.getAirplane().getSize() == Size.SMALL)
                 {
-                    doServices(10000, 20000);
+                    doServices(10000, 30000);
                 }
             }
             case MEDIUM: 
             {
                 if (parkingSpot.getAirplane().getSize() == Size.MEDIUM)
                 {
-                    doServices(10000, 20000);
+                    doServices(20000, 40000);
                 }
             }
             case BIG: 
             {
                 if (parkingSpot.getAirplane().getSize() == Size.BIG)
                 {
-                    doServices(10000, 20000);
+                    doServices(30000, 60000);
                 }
             }
         }
@@ -43,7 +43,7 @@ public class AirportServiceHandler
     {
         System.out.println("Adding fuel to the airplane!");
         Timer fuel = new Timer(fuelTime, new FuelCommand(), false);
-        fuel.start();
+        fuel.start(); 
 
         System.out.println("Cleaning the airplane!");
         Timer cleaning = new Timer(cleanTime, new CleaningCommand(), false);

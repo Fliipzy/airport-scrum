@@ -2,6 +2,7 @@ package dat18c.airport_app.repositories;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -32,7 +33,8 @@ public class AirlineRepository implements ICrud<Airline, String>
 
         while (resultSet.next())
         {
-            airLineInfo.add(new Airline(resultSet.getString(1)));
+            //airLineInfo.add(new Airline(resultSet.getString(1)));
+            airLineInfo.add(maptoairline(resultSet));
         }
 
         statement.close();
@@ -144,5 +146,23 @@ public class AirlineRepository implements ICrud<Airline, String>
             System.out.println("Airline not update check line 93");
         }
     }
+
+
+    private Airline maptoairline(ResultSet resultSet) throws SQLException{
+
+        String name = resultSet.getString("navn");
+
+        return new Airline(name);
+
+    }
+   /* private AirplaneParkingSpot mapToAirplaneParkingSpot(ResultSet resultSet) throws SQLException
+    {
+        int number = resultSet.getInt("standpladsNummer");
+        Size size = Size.fromInt(resultSet.getInt("størrelse"));
+        boolean available = resultSet.getBoolean("available");
+
+        return new AirplaneParkingSpot(size, number, (available) ? new Airplane() : null);
+    }
+    */
 
 }
