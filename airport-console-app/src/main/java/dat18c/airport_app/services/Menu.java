@@ -25,11 +25,11 @@ public class Menu
         dbConnection.connect();
 
         airportServiceCompanyRepository = new AirportServiceCompanyRepository(dbConnection);
-        airlineRepository = new AirlineRepository(dbConnection);
-        departureRepository = new DepartureRepository(dbConnection);
-        airplaneParkingSpotRepository = new AirplaneParkingSpotRepository(dbConnection);
-        arrivalrepository = new ArrivalRepository(dbConnection);
-        airplaneRepository = new AirplaneRepository(dbConnection);
+        airlineRepository               = new AirlineRepository(dbConnection);
+        departureRepository             = new DepartureRepository(dbConnection);
+        airplaneParkingSpotRepository   = new AirplaneParkingSpotRepository(dbConnection);
+        arrivalrepository               = new ArrivalRepository(dbConnection);
+        airplaneRepository              = new AirplaneRepository(dbConnection);
 
         System.out.println("1\t Service for airplanes");
         System.out.println("2\t Airlines");
@@ -49,11 +49,12 @@ public class Menu
             switch (sc.nextInt()) 
             {
                 case 1:
-                    System.out.println("Service for airplanes");
-                    System.out.println("Type 1: Add Flight information");
-                    System.out.println("Type 2: Delete service");
-                    System.out.println("Type 3: Update Service");
-                    System.out.println("Type 4: Show all Service's");
+                    System.out.println("Service for airplanes:\n");
+                    System.out.println("1. Add Flight information");
+                    System.out.println("2. Delete service");
+                    System.out.println("3. Update Service");
+                    System.out.println("4. Show all Services");
+                    System.out.println("5. Return to Main Menu");
                     valg = sc.nextInt();
                     if (valg == 1) 
                     {
@@ -78,18 +79,39 @@ public class Menu
 
                     if (valg == 4)
                     {
-                        System.out.println("Show all service");
-                        System.out.println("NOT WORKING");
+                        System.out.println("1. Fuel Plane");
+                        System.out.println("2. Clean Plane");
+                        System.out.println("3. Return to Menu");
+                        valg = sc.nextInt();
+
+                        if (valg == 1) {
+                            System.out.println("Fueling Plane... \n");
+
+                            //TODO FUEL PLANE
+
+                        }
+                        if(valg == 2) {
+                            System.out.println("Cleaning Plane ...\n");
+                        }
+
+                        if(valg == 3) {
+                            printMenu();
+                        }
+
                         //TODO FIX FETCH ALL
                         //airportServiceCompanyRepository.fetchAll();
+                    }
+                    if (valg == 5) {
+                        printMenu();
                     }
                     break;
 
                 case 2:
-                    System.out.println("Type 1: Insert a new Airline");
-                    System.out.println("Type 2: Update Airlines");
-                    System.out.println("Type 3: Delete Airline");
-                    System.out.println("Type 4: Show all Airline");
+                    System.out.println("1. Insert a new Airline");
+                    System.out.println("2. Update Airlines");
+                    System.out.println("3. Delete Airline");
+                    System.out.println("4. Show all Airline");
+                    System.out.println("5. Return to Menu");
 
                         valg = sc.nextInt();
                     if (valg == 1) 
@@ -117,12 +139,16 @@ public class Menu
                             System.out.println("Airline\t" + a.getName());
                         }
                     }
+                    if (valg == 5) {
+                        printMenu();
+                    }
                     break;
 
                 case 3:
 
                     System.out.println("Departures");
-                    System.out.println("Type 1: Show all departures");
+                    System.out.println("1. Show all departures");
+                    System.out.println("2. Return to Menu");
                     valg = sc.nextInt();
                     if (valg == 1) 
                     {
@@ -135,11 +161,15 @@ public class Menu
 
                         }
                     }
+                    if (valg == 2) {
+                        printMenu();
+                    }
 
                 case 4:
                     System.out.println("Show airport parking spot");
-                    System.out.println("Type 1: Show parking spot");
-                    System.out.println("Type 2: Move plane to a new parking spot");
+                    System.out.println("1. Show parking spot");
+                    System.out.println("2. Move plane to a new parking spot");
+                    System.out.println("3. Return to Menu");
                     valg = sc.nextInt();
 
                     if (valg == 1) 
@@ -160,11 +190,15 @@ public class Menu
                             StandpladsService standpladsService = new StandpladsService(dbConnection);
                             standpladsService.movePlane();
                         }
+                        if(valg == 3) {
+                            printMenu();
+                        }
                         break;
 
                 case 5:
                     System.out.println("Arrival");
-                    System.out.println("Type 1 too see all the Arriavls");
+                    System.out.println("1. See all the Arriavls");
+                    System.out.println("2. Return to Menu");
                     valg = sc.nextInt();
 
                     if (valg == 1) 
@@ -177,8 +211,13 @@ public class Menu
                         }
                         break;
                     }
+                    if (valg == 2) {
+                        printMenu();
+                    }
                 case 6:
-                    System.out.println("Type 1: Show all Airplane's");
+                    System.out.println("1. Show all Airplanes");
+                    System.out.println("2. Delete Airplane");
+                    System.out.println("3. Return to Menu");
                     valg = sc.nextInt();
 
                     if (valg == 1) 
@@ -190,12 +229,25 @@ public class Menu
                             System.out.println( "Name:\t" + a.getName() + "\tSize: " + a.getSize());
                         }
                     }
+                    if (valg == 2) {
+                        System.out.println("Type Plane ID in order to delete it from the DB: ");
+                        sc.nextInt();
+
+                        airplaneRepository.deleteAirplaneInfo();
+                        System.out.println("Airplane Deleted");
+                    }
+                    if (valg == 3) {
+                        printMenu();
+                    }
+
                     break;
+
+
                 case 9:
                     System.out.println("EXIT");
                     System.exit(0);
                 default:
-                    System.out.println("Forket input!");
+                    System.out.println("Invalid input!");
                     printMenu();
             }
             printMenu();
@@ -203,7 +255,7 @@ public class Menu
         catch (InputMismatchException e) 
         {
            // e.printStackTrace();
-            System.out.println("Input skal være et nummer. Prøv igen: \n");
+            System.out.println("Input must be a number. Try again: \n");
             printMenu();
         }
 

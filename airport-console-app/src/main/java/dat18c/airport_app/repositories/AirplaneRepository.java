@@ -1,10 +1,13 @@
 package dat18c.airport_app.repositories;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 import dat18c.airport_app.db.interfaces.IDatabaseConnection;
 import dat18c.airport_app.models.Airline;
@@ -15,6 +18,7 @@ import dat18c.airport_app.repositories.interfaces.ICrud;
 public class AirplaneRepository implements ICrud<Airplane, String>
 {
     private Connection connection;
+    static Scanner input;
 
     public AirplaneRepository(IDatabaseConnection dbConnection) 
     {
@@ -82,5 +86,29 @@ public class AirplaneRepository implements ICrud<Airplane, String>
         Airline airline = new Airline(resultSet.getString("flyselskab_navn"));
 
         return new Airplane(name, size, airline);
+    }
+
+    public void deleteAirplaneInfo() throws SQLException
+    {
+        try {
+
+            input = new Scanner(System.in);
+            String sql = "DELETE FROM fly WHERE navn=?";
+
+            System.out.println("Choose an Airplane to delete: ");
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, input.nextLine());
+
+            int rowDeleted = statement.executeUpdate();
+
+            if (rowDeleted > 0) {
+                System.out.println("Airplane deleted");
+            }
+
+        }catch (InputMismatchException e){
+            System.out.println("invalid input - try again!");
+        }
+
     }
 }
