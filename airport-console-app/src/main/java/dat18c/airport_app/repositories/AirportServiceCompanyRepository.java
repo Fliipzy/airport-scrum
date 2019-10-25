@@ -7,24 +7,29 @@ import java.util.Scanner;
 
 import dat18c.airport_app.db.interfaces.IDatabaseConnection;
 import dat18c.airport_app.models.AirportServiceCompany;
+import dat18c.airport_app.models.enums.Size;
 import dat18c.airport_app.repositories.interfaces.ICrud;
 
 
-public class AirportServiceCompanyRepository implements ICrud<AirportServiceCompany> {
+public class AirportServiceCompanyRepository implements ICrud<AirportServiceCompany, Integer> 
+{
     private Connection connection;
     static Scanner input;
 
-    public AirportServiceCompanyRepository(IDatabaseConnection databaseConnection) {
+    public AirportServiceCompanyRepository(IDatabaseConnection databaseConnection) 
+    {
         this.connection = databaseConnection.getConnection();
     }
 
-    public List<AirportServiceCompany> fetchAll() throws SQLException {
+    public List<AirportServiceCompany> fetchAll() throws SQLException 
+    {
         List<AirportServiceCompany> serviceSelskaber = new ArrayList<AirportServiceCompany>();
 
         var statement = connection.createStatement();
         var resultSet = statement.executeQuery("SELECT * FROM serviceselskab");
 
-        while (resultSet.next()) {
+        while (resultSet.next()) 
+        {
             serviceSelskaber.add(mapToServiceSelskab(resultSet));
         }
 
@@ -34,25 +39,31 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
     }
 
     @Override
-    public AirportServiceCompany findById(int id) throws SQLException {
+    public AirportServiceCompany findById(Integer id) throws SQLException
+    {
         return null;
     }
 
     @Override
-    public void update(AirportServiceCompany o) throws SQLException {
+    public void update(AirportServiceCompany o) throws SQLException 
+    {
 
     }
 
     @Override
-    public void create(AirportServiceCompany o) throws SQLException {
+    public void create(AirportServiceCompany o) throws SQLException 
+    {
 
     }
 
     @Override
-    public void deleteById(int id) throws SQLException {
+    public void deleteById(Integer id) throws SQLException 
+    {
+        
     }
 
-    public void deleteServiceSelskab() throws SQLException {
+    public void deleteServiceSelskab() throws SQLException 
+    {
         input = new Scanner(System.in);
         String sql = "DELETE FROM serviceselskab WHERE idServiceSelskab=?";
 
@@ -60,27 +71,26 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
         statement.setString(1, input.next());
 
         int rowsDeleted = statement.executeUpdate();
-        if (rowsDeleted > 0) {
+        if (rowsDeleted > 0) 
+        {
             System.out.println("ServiceSelskab deleted");
         }
 
     }
 
-    private AirportServiceCompany mapToServiceSelskab(ResultSet resultSet) throws SQLException {
-        return null;
-    }
-
+    
     // Denne metode lavet en insert i serviceselskab tabel.
-    public void insert() {
-
+    public void insert() 
+    {    
         input = new Scanner(System.in);
         String sql =
-                "INSERT INTO serviceselskab(idServiceSelskab, size, Taxi_ind_ved_ankomst, Passagerer_ud,"
-                        + "Bagage_ud, Brændstof_påfyldning, Rengøring, Bagage_ind, Passagerer_ind, Taxi_ud_til_afgang,"
-                        + "Taxi_til_og_fra_ventepladser, Personale_til_og_fra_naboplads, Personale_til_og_fra_øvrige_i_egen_terminal,"
-                        + "Personale_til_og_fra_den_anden_terminal ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-        try {
+        "INSERT INTO serviceselskab(idServiceSelskab, size, Taxi_ind_ved_ankomst, Passagerer_ud,"
+        + "Bagage_ud, Brændstof_påfyldning, Rengøring, Bagage_ind, Passagerer_ind, Taxi_ud_til_afgang,"
+        + "Taxi_til_og_fra_ventepladser, Personale_til_og_fra_naboplads, Personale_til_og_fra_øvrige_i_egen_terminal,"
+        + "Personale_til_og_fra_den_anden_terminal ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        try
+        {
             PreparedStatement statement = connection.prepareStatement(sql);
             System.out.print("Skriv Id: ");
             statement.setInt(1, input.nextInt());
@@ -110,27 +120,31 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
             statement.setInt(13, input.nextInt());
             System.out.print("Skriv Personale_til_og_fra_den_anden_terminal");
             statement.setInt(14, input.nextInt());
-
+            
             int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
+            if (rowsInserted > 0) 
+            {
                 System.out.println("Info added");
             }
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) 
+        {
             e.printStackTrace();
         }
     }
-
-    public void updateServiceTable() {
-
+    
+    public void updateServiceTable() 
+    {    
         input = new Scanner(System.in);
-
+        
         String sql =
-                "UPDATE serviceselskab SET idServiceSelskab=?, size=?, Taxi_ind_ved_ankomst=?, Passagerer_ud=?,"
-                        + "Bagage_ud=?, Brændstof_påfyldning=?, Rengøring=?, Bagage_ind=?, Passagerer_ind=?, Taxi_ud_til_afgang=?,"
-                        + "Taxi_til_og_fra_ventepladser=?, Personale_til_og_fra_naboplads=?, Personale_til_og_fra_øvrige_i_egen_terminal=?,"
-                        + "Personale_til_og_fra_den_anden_terminal=?";
-
-        try {
+        "UPDATE serviceselskab SET idServiceSelskab=?, size=?, Taxi_ind_ved_ankomst=?, Passagerer_ud=?,"
+        + "Bagage_ud=?, Brændstof_påfyldning=?, Rengøring=?, Bagage_ind=?, Passagerer_ind=?, Taxi_ud_til_afgang=?,"
+        + "Taxi_til_og_fra_ventepladser=?, Personale_til_og_fra_naboplads=?, Personale_til_og_fra_øvrige_i_egen_terminal=?,"
+        + "Personale_til_og_fra_den_anden_terminal=?";
+        
+        try 
+        {
             PreparedStatement statement = connection.prepareStatement(sql);
             System.out.print("Skriv Id: ");
             statement.setInt(1, input.nextInt());
@@ -160,15 +174,37 @@ public class AirportServiceCompanyRepository implements ICrud<AirportServiceComp
             statement.setInt(13, input.nextInt());
             System.out.print("Skriv Personale_til_og_fra_den_anden_terminal");
             statement.setInt(14, input.nextInt());
-
+            
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing user was updated successfully!");
             }
-
-        } catch (SQLException e) {
+            
+        } 
+        catch (SQLException e) 
+        {
             e.printStackTrace();
         }
+        
+    }
 
+    private AirportServiceCompany mapToServiceSelskab(ResultSet resultSet) throws SQLException 
+    {
+        int id = resultSet.getInt("idServiceSelskab");
+        Size size = Size.fromInt(resultSet.getInt("size"));
+        int taxiIn_time = resultSet.getInt("Taxi_ind_ved_ankomst");
+        int passengerOut_time = resultSet.getInt("Passagerer_ud");
+        int baggageOut_time = resultSet.getInt("Baggage_ud");
+        int refuel_time = resultSet.getInt("Brændstof_påfyldning");
+        int cleaing_time = resultSet.getInt("Rengøring");
+        int baggageIn_time = resultSet.getInt("Baggage_ind");
+        int passengersIn_time = resultSet.getInt("Passagerer_ind");
+        int taxiToExit_time = resultSet.getInt("Taxi_ud_til_afgang");
+        int taxiToAndFromWaitingSpots = resultSet.getInt("Taxi_til_og_fra_ventepladser");
+        int personalToAndFrom = resultSet.getInt("Personale_til_og_fra_naboplads");
+        int personalToAndFromOwnTerminal = resultSet.getInt("Personale_til_og_fra_øvrige_i_egen_terminal");
+        int personalToAndFromOtherTerminal = resultSet.getInt("Personale_til_og_fra_den_anden_terminal");
+
+        return new AirportServiceCompany(id, size, taxiIn_time, passengerOut_time, baggageOut_time, refuel_time, cleaing_time, baggageIn_time, passengersIn_time, taxiToExit_time, taxiToAndFromWaitingSpots, personalToAndFromOwnTerminal, personalToAndFromOtherTerminal);
     }
 }

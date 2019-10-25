@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ import dat18c.airport_app.db.interfaces.IDatabaseConnection;
 import dat18c.airport_app.models.Airline;
 import dat18c.airport_app.repositories.interfaces.ICrud;
 
-public class AirlineRepository implements ICrud<Airline> 
+public class AirlineRepository implements ICrud<Airline, String> 
 {
     private Connection connection;
     static Scanner input;
@@ -52,32 +53,38 @@ public class AirlineRepository implements ICrud<Airline>
     }
 
     @Override
-    public Airline findById(int id) throws SQLException 
+    public Airline findById(String id) throws SQLException 
     {
         return null;
     }
 
     @Override
-    public void deleteById(int id) throws SQLException 
+    public void deleteById(String id) throws SQLException 
     {
 
     }
 
     public void deleteairLineInfo() throws SQLException
     {
-        input = new Scanner(System.in);
-        String sql = "DELETE FROM flyselskab WHERE navn=?";
+        try {
 
-        System.out.println("Please delete Airline Company");
 
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1,input.nextLine());
+            input = new Scanner(System.in);
+            String sql = "DELETE FROM flyselskab WHERE navn=?";
 
-        int rowDeleted = statement.executeUpdate();
+            System.out.println("Please delete Airline Company - Chose the name of the Airline");
 
-        if (rowDeleted > 0)
-        {
-            System.out.println("Airline deleted");
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, input.nextLine());
+
+            int rowDeleted = statement.executeUpdate();
+
+            if (rowDeleted > 0) {
+                System.out.println("Airline deleted");
+            }
+
+        }catch (InputMismatchException e){
+            System.out.println("invalid input - try again!");
         }
 
     }
@@ -111,13 +118,15 @@ public class AirlineRepository implements ICrud<Airline>
     {
         input = new Scanner(System.in);
 
-        String sql = "UPDATE flyselskab SET navn=?";
+        String sql = "UPDATE flyselskab SET navn=? where navn=?";
 
         try
         {
 
             System.out.println("Please chose the Airline you want to update");
             PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(2,input.nextLine());
+            System.out.println("type new name");
             statement.setString(1,input.nextLine());
 
 
