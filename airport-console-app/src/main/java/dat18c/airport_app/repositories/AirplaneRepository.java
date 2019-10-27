@@ -51,14 +51,7 @@ public class AirplaneRepository implements ICrud<Airplane, String>
 
     @Override
     public void update(Airplane t) throws SQLException
-    {
-        var preparedStatement = connection.prepareStatement("UPDATE fly SET flyselskab_navn=?, størrelse=? WHERE navn=?");
-        preparedStatement.setString(3, t.getName());
-        preparedStatement.setString(1, t.getAirline().getName());
-        preparedStatement.setInt(2, t.getSize().ordinal()+1);
-
-        preparedStatement.executeUpdate();
-    }
+    {}
 
     @Override
     public void create(Airplane t) throws SQLException
@@ -86,6 +79,39 @@ public class AirplaneRepository implements ICrud<Airplane, String>
         Airline airline = new Airline(resultSet.getString("flyselskab_navn"));
 
         return new Airplane(name, size, airline);
+    }
+
+    public void updateAirplaneInfo() {
+            input = new Scanner(System.in);
+
+            String query = "UPDATE lufthavn.fly SET navn=? WHERE navn=?"; //", flyselskab_navn=? WHERE flyselskab_navn=?, størrelse=? WHERE størrelse=?";
+
+
+
+            try {
+                System.out.println("Select which Airplane you want to update: ");
+                var preparedStatement = connection.prepareStatement(query);
+
+                preparedStatement.setString(1, input.nextLine());
+                System.out.println("Set a new name: ");
+                preparedStatement.setString(2, input.nextLine());
+                System.out.println("Plane Name Changed.");
+                //System.out.println("Enter the new Airline Company Name: ");
+                //preparedStatement.setString(3, input.nextLine());
+                //preparedStatement.setString(, input.nextLine());
+                /*System.out.println("Enter the new size: ");
+                preparedStatement.setInt(3, input.nextInt());
+                */
+                preparedStatement.executeUpdate();
+
+                int rowUpdated = preparedStatement.executeUpdate();
+
+                if (rowUpdated != 0) {
+                    System.out.println("An Airplane has been updated");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
     }
 
     public void deleteAirplaneInfo() throws SQLException

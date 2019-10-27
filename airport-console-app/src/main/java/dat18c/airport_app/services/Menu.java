@@ -107,19 +107,24 @@ public class Menu
                     break;
 
                 case 2:
-                    System.out.println("1. Insert a new Airline");
+                    System.out.println("1. Show all Airlines");
                     System.out.println("2. Update Airlines");
-                    System.out.println("3. Delete Airline");
-                    System.out.println("4. Show all Airline");
+                    System.out.println("3. Delete Airlines");
+                    System.out.println("4. Insert a new Airline");
                     System.out.println("5. Return to Menu");
 
                         valg = sc.nextInt();
-                    if (valg == 1) 
+                    if (valg == 1)
                     {
-                        System.out.println("insert a new Airline");
-                        airlineRepository.create();
+                        List<Airline> airlines = airlineRepository.fetchAll();
+
+                        for (Airline a: airlines){
+
+                            System.out.println("Airline\t" + a.getName()+ "\n");
+                        }
 
                     }
+
                     if (valg == 2) 
                     {
                         System.out.println("Update Airlines");
@@ -127,18 +132,16 @@ public class Menu
                     }
                     if (valg == 3) 
                     {
-                        System.out.println("Delete Airline");
+                        System.out.println("Delete Airlines");
                         airlineRepository.deleteairLineInfo();
                     }
                     if (valg == 4)
                     {
-                        List<Airline> airlines = airlineRepository.fetchAll();
+                        System.out.println("insert a new Airline");
+                        airlineRepository.create();
 
-                        for (Airline a: airlines){
-
-                            System.out.println("Airline\t" + a.getName());
-                        }
                     }
+
                     if (valg == 5) {
                         printMenu();
                     }
@@ -167,8 +170,8 @@ public class Menu
 
                 case 4:
                     System.out.println("Show airport parking spot");
-                    System.out.println("1. Show parking spot");
-                    System.out.println("2. Move plane to a new parking spot");
+                    System.out.println("1. Show parking spots");
+                    System.out.println("2. Move Plane to a new parking spot");
                     System.out.println("3. Return to Menu");
                     valg = sc.nextInt();
 
@@ -216,8 +219,9 @@ public class Menu
                     }
                 case 6:
                     System.out.println("1. Show all Airplanes");
-                    System.out.println("2. Delete Airplane");
-                    System.out.println("3. Return to Menu");
+                    System.out.println("2. Update Airplane");
+                    System.out.println("3. Delete Airplane");
+                    System.out.println("4. Return to Menu");
                     valg = sc.nextInt();
 
                     if (valg == 1) 
@@ -226,17 +230,22 @@ public class Menu
 
                         for (Airplane a : airplanes) 
                         {
-                            System.out.println( "Name:\t" + a.getName() + "\tSize: " + a.getSize());
+                            System.out.println("Name: " + a.getName() + "\tSize: " + a.getSize());
                         }
                     }
+
                     if (valg == 2) {
+                        airplaneRepository.updateAirplaneInfo();
+                    }
+
+                    if (valg == 3) {
                         System.out.println("Type Plane ID in order to delete it from the DB: ");
                         sc.nextInt();
 
                         airplaneRepository.deleteAirplaneInfo();
                         System.out.println("Airplane Deleted");
                     }
-                    if (valg == 3) {
+                    if (valg == 4) {
                         printMenu();
                     }
 
